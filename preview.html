@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vista previa · It’s my party and I’ll cry if I want to</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Creepster&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0D0A12;--card:#18131F;--ink:#F6EEE3;--mut:#A99CB0;--ac:#FF7A1A;--on:#0D0A12;--ac2:#8BFF5A;--on2:#0D0A12;--ln:#2E2538;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 "Nunito",system-ui,sans-serif}
+main{max-width:720px;margin:0 auto;padding:28px 16px 48px}
+h1{font:400 clamp(30px,8vw,48px)/1.1 "Creepster","Nunito",system-ui,sans-serif;margin:0 0 8px;letter-spacing:.2px}
+.sub{color:var(--mut);margin:0 0 14px}
+.pill{display:inline-block;background:var(--ac);color:var(--on);font-weight:600;border-radius:999px;padding:6px 16px}
+nav{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 16px}
+nav button{flex:none;border:1.5px solid var(--ln);background:var(--card);color:var(--ink);border-radius:999px;padding:8px 16px;font:500 15px "Nunito",system-ui,sans-serif;cursor:pointer}
+nav button[aria-pressed="true"]{background:var(--ac2);border-color:var(--ac2);color:#fff}
+button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+.card{background:var(--card);border:1.5px solid var(--ln);border-radius:16px;padding:14px}
+.r{display:flex;gap:8px;align-items:center;padding:6px 0;border-bottom:1px solid var(--ln)}
+.r:last-of-type{border-bottom:0}
+input[type=text],select{font:400 16px "Nunito",system-ui,sans-serif;color:var(--ink);background:transparent;border:1px solid transparent;border-radius:8px;padding:8px;min-width:0;flex:1}
+input[type=text]:hover,select:hover,input[type=text]:focus{border-color:var(--ln)}
+input.t0{flex:0 0 92px;font-weight:600;color:var(--ac2)}
+input.w{flex:0 0 38%}
+input[type=checkbox]{width:22px;height:22px;accent-color:var(--ac2);flex:none}
+.x{border:0;background:none;color:var(--mut);font-size:22px;cursor:pointer;padding:4px 8px}
+.add{margin-top:10px;border:1.5px dashed var(--ln);background:none;color:var(--ink);border-radius:10px;padding:8px 14px;font:500 15px "Nunito",system-ui,sans-serif;cursor:pointer}
+.stat{font-weight:600;margin:0 0 10px}
+.big{background:var(--ac);color:var(--on);border-radius:16px;padding:18px;font:400 24px/1.2 "Creepster","Nunito",system-ui,sans-serif;margin-bottom:12px}
+.go{border:0;background:var(--ac2);color:#fff;border-radius:10px;padding:10px 16px;font:600 15px "Nunito",system-ui,sans-serif;cursor:pointer;text-decoration:none;display:inline-block}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.chips span{border:1.5px solid var(--ln);background:var(--card);border-radius:999px;padding:5px 12px}
+h2{font:400 22px "Creepster","Nunito",system-ui,sans-serif;margin:18px 0 8px}
+p.n{color:var(--mut);margin:0 0 10px}
+
+body{background:radial-gradient(900px 420px at 50% -120px,rgba(255,122,26,.28),transparent 70%),var(--bg)}
+h1{letter-spacing:1.5px;color:var(--ac);text-shadow:0 0 18px rgba(255,122,26,.45)}
+h1::after{content:" 🦇";font-size:.7em}
+h2{letter-spacing:1px;color:var(--ac2)}
+.card{box-shadow:0 0 0 1px rgba(139,255,90,.06),0 10px 30px rgba(0,0,0,.4)}
+.big{letter-spacing:1px}
+nav button[aria-pressed="true"]{color:var(--on2)}
+.go{color:var(--on2)}
+.hero{position:relative;overflow:hidden;background:linear-gradient(160deg,#2A1638,#18131F 60%);border:1.5px solid var(--ac);border-radius:20px;padding:26px 20px 22px;box-shadow:0 0 34px rgba(255,122,26,.18);margin-bottom:14px}
+.hero .k{margin:0 0 6px;color:var(--ac2);font-weight:700;letter-spacing:2px;text-transform:uppercase;font-size:13px}
+.hero h2{font-size:40px;line-height:1.05;margin:0 0 10px;color:var(--ink)}
+.hero p{margin:0;color:var(--ink)}
+.hero .bg{position:absolute;right:-6px;bottom:-14px;font-size:84px;opacity:.16;pointer-events:none}
+.info{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:14px}
+.info div{background:var(--card);border:1.5px solid var(--ln);border-radius:14px;padding:12px 14px}
+.info b{display:block;color:var(--ac);font-size:13px;letter-spacing:1px;text-transform:uppercase}
+.info span{display:block;font-weight:600;line-height:1.35;margin-top:2px}
+.ppl{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.ppl span{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1.5px solid var(--ln);border-radius:999px;padding:4px 14px 4px 4px;font-weight:600}
+.ppl i{font-style:normal;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-weight:700;color:#0D0A12}
+.ppl em{font-style:normal;display:flex;flex-direction:column;line-height:1.2}
+.ppl small{font-weight:400;font-size:12px;color:var(--mut)}
+.sp{flex:none;color:var(--ac2);text-decoration:none;font-size:16px;padding:6px 8px}
+.r.s{flex-wrap:wrap;gap:2px 8px}
+.r.s input[type=text]{flex:1 1 100%}
+.r.s select{flex:0 0 auto;margin-right:auto;color:var(--mut)}
+.ppl i,.ppl .av{width:40px;height:40px;flex:none;border-radius:50%}
+.ppl .av{object-fit:cover;border:2px solid var(--ac);box-sizing:border-box}
+.ppl .ig{font-size:12px;font-weight:600;color:var(--ac2);text-decoration:none}
+.must{background:rgba(255,122,26,.12);border:1.5px solid var(--ac);border-radius:14px;padding:12px 14px;margin-bottom:12px}
+.must b{display:block;color:var(--ac);font-size:13px;letter-spacing:1px;text-transform:uppercase}
+.must span{display:block;font-weight:700;font-size:17px;line-height:1.35;margin-top:2px}
+.acts{display:flex;flex-wrap:wrap;gap:10px}
+main{position:relative;z-index:1}
+.spooky{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.spooky span{position:absolute;bottom:-60px;font-size:28px;opacity:.22}
+.rsvp{background:var(--card);border:1.5px solid var(--ac2);border-radius:18px;padding:16px;margin-bottom:14px;box-shadow:0 0 28px rgba(139,255,90,.12)}
+.rsvp h2{margin:0 0 10px}
+.rsvp label{display:block;font-weight:700;font-size:14px;margin-bottom:6px;color:var(--mut)}
+.rsvp select{width:100%;border:1.5px solid var(--ln);background:var(--bg);font-weight:600;padding:10px 12px;margin-bottom:12px}
+.rb{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.rb button{border:1.5px solid var(--ln);background:var(--bg);color:var(--ink);border-radius:14px;padding:12px 6px;font:700 15px "Nunito",system-ui,sans-serif;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;min-height:64px}
+.rb button i{font-style:normal;font-size:24px;line-height:1}
+.rb button:disabled{opacity:.45;cursor:not-allowed}
+.rb button[aria-pressed="true"][data-rsvp="si"]{background:var(--ac2);border-color:var(--ac2);color:#0D0A12}
+.rb button[aria-pressed="true"][data-rsvp="talvez"]{background:#FFD23F;border-color:#FFD23F;color:#0D0A12}
+.rb button[aria-pressed="true"][data-rsvp="no"]{background:#3A3142;border-color:#6E6478}
+.rmsg{margin:12px 0 0;font-weight:700}
+.rcount{margin:6px 0 0;color:var(--mut);font-size:14px}
+.demo{background:rgba(255,210,63,.12);border:1.5px dashed #FFD23F;border-radius:12px;padding:10px 12px;margin:0 0 14px;font-size:14px}
+.ppl span{position:relative}
+.ppl .bd{position:absolute;left:30px;top:28px;width:18px;height:18px;border-radius:50%;font-size:11px;font-weight:800;font-style:normal;display:grid;place-items:center;border:2px solid var(--card);color:#0D0A12}
+.ppl .st-si .bd{background:var(--ac2)}
+.ppl .st-talvez .bd{background:#FFD23F}
+.ppl .st-no{opacity:.45}
+.ppl .st-no .bd{background:#A99CB0}
+.gs{flex:0 0 auto;font-size:12px;font-weight:700;border-radius:999px;padding:3px 9px;border:1.5px solid var(--ln);color:var(--mut)}
+.gs.st-si{background:var(--ac2);border-color:var(--ac2);color:#0D0A12}
+.gs.st-talvez{background:#FFD23F;border-color:#FFD23F;color:#0D0A12}
+.gs.st-no{background:#3A3142;color:var(--ink)}
+@media (prefers-reduced-motion:no-preference){.rb button{transition:transform .15s}.rb button:not(:disabled):active{transform:scale(.93)}.rb button[aria-pressed="true"] i{animation:bounce .6s cubic-bezier(.2,1.8,.4,1)}@keyframes bounce{from{transform:scale(.4) rotate(-20deg)}}}
+#fx{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:50}
+#snd{position:fixed;z-index:60;right:calc(14px + env(safe-area-inset-right,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px));width:48px;height:48px;border-radius:50%;border:1.5px solid var(--ln);background:var(--card);color:var(--ink);font-size:22px;line-height:1;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.45)}
+.hero .bg{pointer-events:auto;background:none;border:0;cursor:pointer;padding:0;line-height:1;opacity:.3}
+.flyer{position:fixed;z-index:55;pointer-events:none;font-size:30px}
+@media (prefers-reduced-motion:no-preference){
+.spooky span{animation:drift linear infinite}
+@keyframes drift{0%{transform:translate(0,0) rotate(-8deg)}50%{transform:translate(30px,-55vh) rotate(8deg)}100%{transform:translate(-20px,-115vh) rotate(-6deg)}}
+#v>*{animation:rise .35s ease-out both}
+@keyframes rise{from{opacity:.3;transform:translateY(10px)}}
+.pill{animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 22px rgba(255,122,26,.6)}}
+.hero .bg{animation:flicker 3s ease-in-out infinite}
+@keyframes flicker{0%,100%{opacity:.28;transform:rotate(-6deg)}45%{opacity:.5;transform:rotate(4deg) scale(1.06)}55%{opacity:.34}}
+.big{animation:pop .5s cubic-bezier(.2,1.6,.4,1) both}
+@keyframes pop{from{transform:scale(.6) rotate(-4deg);opacity:.4}}
+.chips span,.ppl span{transition:transform .2s}
+.chips span:hover,.ppl span:hover{transform:translateY(-2px) rotate(-1.5deg)}
+nav button,.go,.add,#snd{transition:transform .12s}
+nav button:active,.go:active,.add:active,#snd:active{transform:scale(.92)}
+.ppl .av{transition:transform .5s}
+.ppl span:hover .av{transform:rotate(360deg)}
+}
+</style>
+</head>
+<body>
+<div class="spooky" aria-hidden="true"><span style="left:6%;animation-duration:19s;animation-delay:-3s">🦇</span><span style="left:22%;animation-duration:26s;animation-delay:-14s;font-size:22px">👻</span><span style="left:41%;animation-duration:22s;animation-delay:-8s">🦇</span><span style="left:63%;animation-duration:30s;animation-delay:-20s;font-size:34px">🕸️</span><span style="left:78%;animation-duration:24s;animation-delay:-5s;font-size:22px">🦇</span><span style="left:90%;animation-duration:28s;animation-delay:-17s">👻</span></div>
+<canvas id="fx" aria-hidden="true"></canvas>
+<button type="button" id="snd" aria-label="Silenciar sonidos">🔊</button>
+<main>
+<h1>It’s my party and I’ll cry if I want to</h1>
+<p class="sub">Cumple de Iván y Andy, viernes 30 de octubre, en casa de Iván. Disfraces bienvenidos.</p>
+<span class="pill" id="cd"></span>
+<p class="n" id="note" hidden></p>
+<nav id="tabs" aria-label="Secciones"></nav>
+<section id="v"></section>
+</main>
+<script>
+var K="fiestaIvanAndy",S=null;
+var GM=[{ok:false,x:"Adivina de quién es la canción: suena una de la playlist y adivinan quién la eligió"},{ok:false,x:"Pasarela y concurso de disfraces con premios"},{ok:false,x:"Charadas de personajes: Disney, Cartoon Network y artistas"},{ok:false,x:"Karaoke en equipos"},{ok:false,x:"Lotería de Halloween (para todas las edades)"},{ok:false,x:"Dos verdades y una mentira, para conocerse"},{ok:false,x:"La momia: envolver a un compañero con papel higiénico"},{ok:false,x:"Congelados: bailar y quedarse quieto cuando pare la música"},{ok:false,x:"Mafia o Werewolf (mejor con 8 o más)"},{ok:false,x:"Piñata"}];
+var SG=[{x:"It’s My Party – Lesley Gore (la del nombre de la fiesta)",m:"Llegada"},{x:"Last Train to London – Electric Light Orchestra",m:"Llegada"},{x:"Nicole Kidman – ADÉLA (para Sofi)",m:"Llegada"},{x:"Gimme Love – Joji (para Ivxn)",m:"Llegada"},{x:"El Cantante – Héctor Lavoe (para Andy)",m:"Comida"},{x:"Baila Esta Cumbia – Selena",m:"Comida"},{x:"Party on Fifth Ave. – Mac Miller (para Kebin)",m:"Comida"},{x:"Flow Natural – Tito El Bambino (para Choco)",m:"Baile"},{x:"Hey Mama – The Black Eyed Peas (para Sharuun)",m:"Baile"},{x:"Let’s Get It Started – The Black Eyed Peas (para Sharuun)",m:"Baile"},{x:"Thriller – Michael Jackson",m:"Baile"},{x:"Danza Kuduro – Don Omar",m:"Baile"},{x:"Vivir Mi Vida – Marc Anthony",m:"Baile"},{x:"September – Earth, Wind & Fire",m:"Baile"},{x:"Las Mañanitas",m:"Pastel"},{x:"Un grito en la noche – Alejandra Guzmán (para Carol)",m:"Karaoke"},{x:"La leyenda del hada y el mago – Rata Blanca (para Lili)",m:"Karaoke"},{x:"Lane Boy – Twenty One Pilots (para Juan)",m:"Karaoke"},{x:"Saturday – Twenty One Pilots (para Ivxn)",m:"Karaoke"},{x:"Mr. Brightside – The Killers",m:"Karaoke"},{x:"Livin’ on a Prayer – Bon Jovi",m:"Karaoke"}];
+var G=[{ok:false,n:"Ivxn"},{ok:false,n:"Andy"},{ok:false,n:"Susan"},{ok:false,n:"Kebin"},{ok:false,n:"Andrea"},{ok:false,n:"Sharuun"},{ok:false,n:"Karen"},{ok:false,n:"Alison"},{ok:false,n:"Juan"},{ok:false,n:"Lili"},{ok:false,n:"Sofi"},{ok:false,n:"Carol"},{ok:false,n:"Miki"},{ok:false,n:"Choco"},{ok:false,n:"Jan"},{ok:false,n:"Haylin"},{ok:false,n:"Mac Miller"},{ok:false,n:"Wavo"}];
+try{S=JSON.parse(localStorage.getItem(K))}catch(e){}
+if(!S)S={
+guests:G.slice(),
+food:[{ok:false,x:"Pastel",who:""},{ok:false,x:"Dulces de Halloween",who:""},{ok:false,x:"Botanas",who:""},{ok:false,x:"Platillo principal",who:""},{ok:false,x:"Bebidas y hielo",who:""},{ok:false,x:"Vasos, platos y servilletas",who:""}],
+games:GM.slice(),
+awards:[{x:"Disfraz más creativo",w:""},{x:"Disfraz más terrorífico",w:""},{x:"Disfraz más cómico",w:""},{x:"Mejor disfraz en pareja",w:""}],
+songs:SG.slice(),pl:"",pick:"",v:3};
+if(S.guests)S.guests.forEach(function(g){if(g.n=="Iván")g.n="Ivxn"});
+if(!S.v||S.v<2){S.games=GM.slice();S.songs=SG.slice();S.pick="";if(S.guests&&S.guests.length&&!S.guests.some(function(g){return /^wavo$/i.test((g.n||"").trim())}))S.guests.push({ok:false,n:"Wavo"});S.v=2;try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}}
+if(S.v<3){(S.awards||[]).forEach(function(a){if(a.x=="Mejor disfraz en pareja o grupo")a.x="Mejor disfraz en pareja"});S.v=3;try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}}
+if(!S.guests||!S.guests.length){S.guests=G.slice();try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}}
+var ref=null,ex=false,RO=false,OWN=false,dirty={},busy=false,tm=null;
+function loc(){try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}}
+function save(k){loc();if(k)dirty[k]=1;if(ref&&!RO){clearTimeout(tm);tm=setTimeout(flush,700)}}
+async function flush(){
+if(busy){tm=setTimeout(flush,400);return}
+var ks=Object.keys(dirty);if(!ks.length)return;
+dirty={};busy=true;var o={};ks.forEach(function(k){o[k]=S[k]});
+try{if(ex)await ref.update(o);else{await ref.set(S);ex=true}}
+catch(e){try{await ref.set(S);ex=true}catch(e2){RO=true;note()}}
+busy=false}
+function seed(){if(ref&&!ex&&OWN&&!RO&&!busy){busy=true;ref.set(S).then(function(){ex=true},function(){}).then(function(){busy=false})}}
+function note(){var n=document.getElementById("note");n.hidden=false;n.textContent="Esta versión es solo de lectura: para editar necesitas acceso de colaborador.";view()}
+function apply(snap){
+ex=snap.exists;
+if(!ex){seed();return}
+if(snap.metadata.hasPendingWrites)return;
+var d=snap.data(),a=document.activeElement,ch=false;
+Object.keys(S).forEach(function(k){if(dirty[k]||d[k]===undefined)return;if(JSON.stringify(d[k])!==JSON.stringify(S[k])){S[k]=JSON.parse(JSON.stringify(d[k]));ch=true}});
+if(ch){loc();if(!(a&&a.tagName=="INPUT"&&a.type=="text"&&document.getElementById("v").contains(a)))view()}}
+function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;")}
+var FAV={"Lili":"Rata Blanca","Kebin":"Mac Miller","Sofi":"ADÉLA","Juan":"Twenty One Pilots","Carol":"Alejandra Guzmán","Sharuun":"Black Eyed Peas","Ivxn":"Joji y Twenty One Pilots","Andy":"Héctor Lavoe","Choco":"Tito El Bambino"};
+var IGU={"Ivxn":"ivanxfernandez","Andy":"badassydna","Susan":"sus4n._","Juan":"lehnho_","Jan":"_jan.1_","Miki":"mikingmoran","Sharuun":"sharoonmoreira","Andrea":"andra.maquiz","Wavo":"parkerrodrigo","Karen":"karenabascal__","Alison":"reyesalison.d","Choco":"joosue_cabrera","Sofi":"_.angiee_","Haylin":"_.haylinng_","Mac Miller":"macmiller","Lili":"_lili.14","Kebin":"kebiu"};
+var PIC={"Kebin":"img/kebin.jpg","Carol":"img/carol.jpg"};
+var DEMO=true,RSVP_URL="",RS={"Ivxn":"si","Andy":"si","Susan":"si","Kebin":"talvez","Juan":"si","Lili":"no","Sofi":"si","Choco":"talvez","Mac Miller":"no"},YO="";
+try{YO=localStorage.getItem("fiestaYo")||""}catch(e){}
+if(DEMO){try{var _d=JSON.parse(localStorage.getItem("fiestaDemoRS")||"{}");for(var _k in _d)RS[_k]=_d[_k]}catch(e){}}
+var RL={si:"Sí voy",talvez:"Tal vez",no:"No puede"},RB={si:"✓",talvez:"?",no:"✗"};
+function rsvpLoad(){if(DEMO||!RSVP_URL)return;fetch(RSVP_URL).then(function(r){return r.json()}).then(function(d){var n={};for(var k in d)if(d[k]&&RL[d[k].status])n[k]=d[k].status;if(JSON.stringify(n)!==JSON.stringify(RS)){RS=n;var a=document.activeElement;if(!(a&&a.tagName=="INPUT"&&a.type=="text"))view()}}).catch(function(){})}
+function rsvpSend(name,st){RS[name]=st;view();if(DEMO){try{var d=JSON.parse(localStorage.getItem("fiestaDemoRS")||"{}");d[name]=st;localStorage.setItem("fiestaDemoRS",JSON.stringify(d))}catch(e){}return}
+fetch(RSVP_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({name:name,status:st})}).then(function(r){return r.json()}).then(function(){rsvpLoad()}).catch(function(){var m=document.querySelector(".rmsg");if(m)m.textContent="No se pudo guardar. Revisa tu internet e intenta otra vez."})}
+function rcount(){var c={si:0,talvez:0,no:0};S.guests.forEach(function(g){var s=RS[(g.n||"").trim()];if(s)c[s]++});return c}
+function rsvpBox(){var names=S.guests.map(function(g){return (g.n||"").trim()}).filter(Boolean),mine=YO&&RS[YO],c=rcount();
+var msg=!YO?"Elige tu nombre para confirmar.":!mine?"¿Vienes, "+esc(YO)+"?":mine=="si"?"¡Listo, "+esc(YO)+"! Te esperamos 🎃":mine=="talvez"?"Va, "+esc(YO)+". Avísanos cuando sepas 👻":"Te vamos a extrañar, "+esc(YO)+" 😭";
+return (DEMO?'<p class="demo"><b>Vista previa.</b> Las respuestas que ves son de ejemplo y lo que marques solo se guarda en tu celular.</p>':'')+
+'<div class="rsvp"><h2>¿Vienes?</h2><label for="yo">¿Quién eres?</label><select id="yo"><option value="">Elige tu nombre</option>'+names.map(function(n){return '<option'+(n==YO?" selected":"")+'>'+esc(n)+'</option>'}).join("")+'</select>'+
+'<div class="rb">'+[["si","🎉","¡Sí voy!"],["talvez","🤔","Tal vez"],["no","😭","No puedo"]].map(function(o){return '<button type="button" data-rsvp="'+o[0]+'" aria-pressed="'+(mine==o[0])+'"'+(YO?"":" disabled")+'><i aria-hidden="true">'+o[1]+'</i>'+o[2]+'</button>'}).join("")+'</div>'+
+'<p class="rmsg" role="status">'+msg+'</p><p class="rcount">'+c.si+' van · '+c.talvez+' tal vez · '+c.no+' no pueden</p></div>'}
+function chip(o,i,P){var n=o.n.trim(),u=IGU[n],src=PIC[n]||(u?'img/'+u+'.jpg':''),av=src?'<img class="av" src="'+src+'" alt="">':'<i style="background:'+P[i%P.length]+'" aria-hidden="true">'+esc(n.charAt(0).toUpperCase())+'</i>';
+var st=RS[n];return '<span'+(st?' class="st-'+st+'"':'')+'>'+av+(st?'<b class="bd" aria-label="'+RL[st]+'">'+RB[st]+'</b>':'')+'<em>'+esc(o.n)+(u?'<a class="ig" href="https://www.instagram.com/'+u+'/" target="_blank" rel="noopener">@'+u+'</a>':'')+'</em></span>'}
+var MO=["Llegada","Comida","Baile","Pastel","Karaoke"];
+var SC={
+guests:[["n","text","Nombre"]],
+food:[["ok","check"],["x","text","Qué falta"],["who","text","Quién lo trae","w"]],
+games:[["ok","check"],["x","text","Juego"]],
+awards:[["x","text","Premio"],["w","text","Ganador","w"]],
+songs:[["x","text","Canción y artista"],["m","sel"]]};
+var NEW={guests:{ok:false,n:""},food:{ok:false,x:"",who:""},games:{ok:false,x:""},awards:{x:"",w:""},songs:{x:"",m:"Baile"}};
+var TABS=[["inv","Invitación"],["guests","Invitados"],["food","Comida"],["games","Juegos"],["cos","Disfraces"],["mus","Música"],["dir","A DONDE VOY"]];
+var tab="inv";
+function fld(k,i,o,f){
+var a=' data-k="'+k+'" data-i="'+i+'" data-f="'+f[0]+'"';
+if(f[1]=="check")return '<input type="checkbox" aria-label="Listo"'+a+(o[f[0]]?" checked":"")+'>';
+if(f[1]=="sel")return '<select aria-label="Momento"'+a+'>'+MO.map(function(m){return "<option"+(o.m==m?" selected":"")+">"+m+"</option>"}).join("")+"</select>";
+return (k=="guests"&&f[0]=="n"?'<span aria-hidden="true">⭐</span>':'')+'<input type="text" class="'+(f[3]||"")+'" placeholder="'+f[2]+'" value="'+esc(o[f[0]])+'"'+a+'>'}
+function rows(k){
+return '<div class="card">'+S[k].map(function(o,i){
+var gst=k=="guests"?RS[(o.n||"").trim()]:null;return '<div class="r'+(k=="songs"?' s':'')+'">'+(k=="guests"?'<span class="gs'+(gst?' st-'+gst:'')+'">'+(gst?RL[gst]:"Sin respuesta")+'</span>':'')+SC[k].map(function(f){return fld(k,i,o,f)}).join("")+(k=="songs"&&o.x?'<a class="sp" target="_blank" rel="noopener" aria-label="Buscar en Spotify" href="https://open.spotify.com/search/'+encodeURIComponent(o.x.replace(/\s*\(.*\)\s*$/,""))+'">▶</a>':'')+'<button class="x" data-del="'+k+'" data-i="'+i+'" aria-label="Quitar">×</button></div>'}).join("")+
+'<button class="add" data-add="'+k+'">+ Agregar</button></div>'}
+function cnt(k,f){return S[k].filter(function(o){return o[f]}).length}
+function view(){
+var h="";
+if(tab=="inv"){var P=["#FF7A1A","#8BFF5A","#C58BFF","#FFD23F"],g=S.guests.filter(function(o){return o.n&&o.n.trim()});
+h='<div class="hero"><button type="button" class="bg" data-boo="1" aria-label="Sorpresa de Halloween">🎃</button><p class="k">Esta es tu invitación</p><h2>Halloween + doble cumple</h2><p>Iván y Andy cumplen años y lo celebramos juntos en plena semana de Halloween. Ven con tu disfraz y con ganas de cantar, jugar y conocer gente nueva.</p></div>'+rsvpBox()+
+'<div class="info"><div><b>Cuándo</b><span>Viernes 30 de octubre, 7:00 pm</span></div><div><b>Dónde</b><span>Casa de Iván, Jardines de Verona</span></div><div><b>Dress code</b><span>Disfraz muy recomendado (hay concurso)</span></div><div><b>Qué habrá</b><span>Comida, juegos, karaoke y pastel</span></div></div>'+
+'<h2>Qué traer</h2><div class="must"><b>Obligatorio</b><span>Trae tu propia bebida, con o sin alcohol 🥤🍺</span></div><p class="n">Y si quieres, algo para compartir:</p><div class="chips"><span>Snacks</span><span>Nachos</span><span>Manías</span><span>Gomitas</span></div>'+
+'<h2>Quién viene</h2><p class="n">Para que ya se ubiquen antes de llegar: '+g.length+' invitados, '+rcount().si+' ya confirmaron.</p><div class="ppl">'+g.map(function(o,i){return chip(o,i,P)}).join("")+'</div>'+
+'<div class="acts"><button class="go" data-goto="dir">Cómo llegar</button><button class="go" data-goto="cos" style="background:var(--ac);color:var(--on)">Ideas de disfraz</button></div>'}
+if(tab=="guests"){var rc=rcount();h='<p class="stat">'+rc.si+' van, '+rc.talvez+' tal vez y '+rc.no+' no pueden, de '+S.guests.length+' invitados</p>'+rows("guests")}
+if(tab=="food")h='<p class="stat">'+cnt("food","ok")+" de "+S.food.length+' pendientes listos</p>'+rows("food");
+if(tab=="games")h=(S.pick?'<div class="big">'+esc(S.pick)+"</div>":"")+'<button class="go" data-rand="1">Sacar un juego al azar</button><p class="n" style="margin-top:10px">Pensados para grupos de 6 a 18 y todas las edades.</p><h2>Lista de juegos</h2>'+rows("games")+'<h2>Qué tener listo</h2><div class="chips">'+["Bocina y extensión", "Playlist descargada (sin anuncios)", "Micrófono o app de karaoke", "Premios del concurso", "Papel higiénico para La momia", "Lotería y fichas", "Piñata con dulces", "Rincón de fotos con buena luz", "Velas y encendedor para el pastel", "Kleenex, por si alguien quiere llorar 😭"].map(function(c){return "<span>"+c+"</span>"}).join("")+"</div>";
+if(tab=="cos")h='<p class="n">Ideas si no saben de qué ir: individuales, y algunas en pareja por si acaso.</p>'+[["Cartoon Network",["Johnny Bravo","Dexter","Dee Dee","Bombón, Burbuja o Bellota","Mojo Jojo","Coraje, el perro cobarde","Puro Hueso","Mandy","Finn el humano","Marceline la vampira","Dulce Princesa","Gumball","Samurái Jack","Steven Universe"]],["Disney y Pixar",["Cruella de Vil","Maléfica","Úrsula","Hades","Stitch","Miguel de Coco","Mirabel de Encanto","Elsa","Mulán","Moana","Campanita","Jack Sparrow","Buzz Lightyear","Jessie","Mike Wazowski","Edna Moda","Jack Skellington"]],["Artistas",["Selena Quintanilla","Juan Gabriel","Celia Cruz","Shakira","Karol G","Bad Bunny","Gloria Trevi","Michael Jackson en Thriller","Freddie Mercury","Lady Gaga","Britney Spears","Madonna","Elvis","Frida Kahlo"]],["Clásicos de terror",["Merlina Addams","Chucky","Annabelle","Ghostface de Scream","Pennywise","Beetlejuice","Freddy Krueger","Samara de El Aro","La Llorona","Catrina"]],["Guiño a los invitados",["Mac Miller","Héctor Lavoe","Tyler Joseph de Twenty One Pilots","Alejandra Guzmán","Fergie de Black Eyed Peas","Tito El Bambino"]],["En pareja",["Dexter y Dee Dee","Finn y Jake","Lilo y Stitch","Woody y Jessie","Mike y Sulley","Jack y Sally","Shrek y Fiona","Gomez y Morticia Addams","Chucky y Tiffany","Mario y Luigi","Danny y Sandy de Grease","Sonny y Cher"]]].map(function(g){return '<p class="stat" style="margin:14px 0 8px">'+g[0]+'</p><div class="chips">'+g[1].map(function(c){return "<span>"+c+"</span>"}).join("")+'</div>'}).join("")+"<h2>Premios del concurso</h2>"+rows("awards");
+if(tab=="mus"){var ok=/^https?:\/\//i.test(S.pl);h='<div class="card"><p class="n">Pega el link de tu playlist de Spotify o YouTube.</p><div class="r"><input type="text" id="pl" placeholder="https://..." value="'+esc(S.pl)+'" aria-label="Link de la playlist"></div><p style="margin:10px 0 0"><a class="go" id="op" target="_blank" rel="noopener"'+(ok?' href="'+esc(S.pl)+'"':' aria-disabled="true" style="opacity:.5"')+">Abrir playlist</a></p></div><h2>Canciones por momento</h2><p class='stat'>Regla de la casa: nada de canciones tristes. 🚫😭</p><p class='n'>Toca ▶ para buscar cada una en Spotify y agregarla a la playlist.</p>"+rows("songs")}
+if(tab=="dir")h='<div class="card"><h2 style="margin-top:0">Jardines de Verona</h2><p style="margin:0 0 6px">10ma calle 10-77</p><p style="margin:0 0 6px">Codigo 6000 y 1197</p><p style="margin:0;font-weight:600">Familia Fernandez</p></div>';
+document.getElementById("v").innerHTML=h;
+document.getElementById("tabs").innerHTML=TABS.map(function(t){return '<button data-tab="'+t[0]+'" aria-pressed="'+(t[0]==tab)+'">'+t[1]+"</button>"}).join("");if(RO)document.querySelectorAll("#v input,#v select,#v button").forEach(function(e){e.disabled=true})}
+document.addEventListener("click",function(e){
+var b=e.target.closest("button");if(!b)return;
+if(b.dataset.tab){tab=b.dataset.tab;view();return}
+if(b.dataset.goto){tab=b.dataset.goto;view();window.scrollTo(0,0);return}
+if(b.dataset.rsvp){if(YO)rsvpSend(YO,b.dataset.rsvp);return}
+if(b.dataset.add){var k=b.dataset.add;S[k].push(JSON.parse(JSON.stringify(NEW[k])));save(k);view();var t=document.querySelectorAll('input[type="text"][data-k="'+k+'"]');if(t.length)t[t.length-SC[k].filter(function(f){return f[1]=="text"}).length].focus();return}
+if(b.dataset.del){S[b.dataset.del].splice(+b.dataset.i,1);save(b.dataset.del);view();return}
+if(b.dataset.rand){var l=S.games.filter(function(g){return !g.ok&&g.x});S.pick=l.length?l[Math.floor(Math.random()*l.length)].x:"Ya jugaron todo. ¡Agreguen más juegos!";save("pick");view()}});
+document.addEventListener("input",function(e){
+var t=e.target;
+if(t.id=="yo"){YO=t.value;try{localStorage.setItem("fiestaYo",YO)}catch(e){}view();return}
+if(t.id=="pl"){S.pl=t.value.trim();var a=document.getElementById("op");if(/^https?:\/\//i.test(S.pl)){a.href=S.pl;a.style.opacity=1;a.removeAttribute("aria-disabled")}else{a.removeAttribute("href");a.style.opacity=.5}save("pl");return}
+if(!t.dataset.k)return;
+var o=S[t.dataset.k][+t.dataset.i];
+o[t.dataset.f]=t.type=="checkbox"?t.checked:t.value;save(t.dataset.k);
+if(t.type=="checkbox")view()});
+function days(){var n=new Date(),a=new Date(n.getFullYear(),n.getMonth(),n.getDate()),b=new Date(2026,9,30);return Math.round((b-a)/864e5)}
+var d=days(),c=document.getElementById("cd");
+c.textContent=d>1?"Faltan "+d+" días":d==1?"Es mañana":d==0?"¡Hoy es el día!":"¡Gracias por venir!";
+view();
+rsvpLoad();setInterval(rsvpLoad,30000);
+try{
+claude.use("db").then(function(db){if(!db)return;ref=db.doc("party/state");ref.onSnapshot(apply,function(){ref=null})}).catch(function(){});
+claude.use("user").then(function(u){if(!u)return;return Promise.all([u.isOwner(),u.can("data.write")]).then(function(v){OWN=v[0];if(v[1]===false&&!v[0]){RO=true;note()}else seed()})}).catch(function(){});
+}catch(e){}
+</script>
+<script>
+(function(){
+var AC=null,on=true,btn=document.getElementById("snd");
+try{on=localStorage.getItem("fiestaSnd")!=="off"}catch(e){}
+function lbl(){btn.textContent=on?"🔊":"🔇";btn.setAttribute("aria-label",on?"Silenciar sonidos":"Activar sonidos")}
+lbl();
+function ctx(){if(!AC){var C=window.AudioContext||window.webkitAudioContext;if(!C)return null;AC=new C()}if(AC.state==="suspended")AC.resume();return AC}
+function tone(f,t0,d,type,vol,f2){var c=ctx();if(!c||!on)return;var o=c.createOscillator(),g=c.createGain(),t=c.currentTime+t0;o.type=type||"sine";o.frequency.setValueAtTime(f,t);if(f2)o.frequency.exponentialRampToValueAtTime(f2,t+d);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(vol||.18,t+.015);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g);g.connect(c.destination);o.start(t);o.stop(t+d+.05)}
+function noise(t0,d,vol){var c=ctx();if(!c||!on)return;var n=Math.floor(c.sampleRate*d),b=c.createBuffer(1,n,c.sampleRate),a=b.getChannelData(0);for(var i=0;i<n;i++)a[i]=(Math.random()*2-1)*(1-i/n);var src=c.createBufferSource(),g=c.createGain(),f=c.createBiquadFilter();f.type="bandpass";f.frequency.value=1800;src.buffer=b;g.gain.value=vol||.25;src.connect(f);f.connect(g);g.connect(c.destination);src.start(c.currentTime+t0)}
+var SFX={
+tick:function(){tone(880,0,.07,"triangle",.12,1320)},
+pop:function(){tone(520,0,.12,"sine",.2,1040)},
+del:function(){tone(300,0,.15,"triangle",.14,150)},
+whoosh:function(){noise(0,.35,.18);tone(200,0,.35,"sine",.06,900)},
+fanfare:function(){[523,659,784,1047].forEach(function(f,i){tone(f,i*.09,.22,"square",.07)});tone(1047,.36,.5,"triangle",.12)},
+roll:function(){for(var i=0;i<10;i++)noise(i*.045,.04,.2)},
+boo:function(){var c=ctx();if(!c||!on)return;var o=c.createOscillator(),l=c.createOscillator(),lg=c.createGain(),g=c.createGain(),t=c.currentTime;o.frequency.setValueAtTime(330,t);o.frequency.exponentialRampToValueAtTime(660,t+.6);o.frequency.exponentialRampToValueAtTime(220,t+1.4);l.frequency.value=6;lg.gain.value=14;l.connect(lg);lg.connect(o.frequency);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.16,t+.1);g.gain.exponentialRampToValueAtTime(.0001,t+1.5);o.connect(g);g.connect(c.destination);o.start(t);l.start(t);o.stop(t+1.6);l.stop(t+1.6)},
+sad:function(){[392,370,349,330].forEach(function(f,i){tone(f,i*.3,i==3?.8:.28,"sawtooth",.06,i==3?300:0)})}
+};
+window.fiestaSfx=SFX;
+var cv=document.getElementById("fx"),cx=cv.getContext?cv.getContext("2d"):null,P=[],raf=0,RM=false;
+try{RM=matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){}
+function size(){var r=window.devicePixelRatio||1;cv.width=innerWidth*r;cv.height=innerHeight*r;cx.setTransform(r,0,0,r,0,0)}
+function burst(x,y,n){if(RM||!cx)return;if(!raf)size();var C=["#FF7A1A","#8BFF5A","#C58BFF","#FFD23F"];for(var i=0;i<n;i++){var a=Math.random()*Math.PI*2,sp=3+Math.random()*7;P.push({x:x,y:y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp-4,r:3+Math.random()*4,c:C[i%4],l:60+Math.random()*40,rot:Math.random()*6})}if(!raf)raf=requestAnimationFrame(step)}
+function step(){cx.clearRect(0,0,innerWidth,innerHeight);P=P.filter(function(p){p.l--;p.vy+=.25;p.vx*=.99;p.x+=p.vx;p.y+=p.vy;p.rot+=.2;cx.save();cx.translate(p.x,p.y);cx.rotate(p.rot);cx.globalAlpha=Math.min(1,p.l/30);cx.fillStyle=p.c;cx.fillRect(-p.r,-p.r/2,p.r*2,p.r);cx.restore();return p.l>0&&p.y<innerHeight+40});raf=P.length?requestAnimationFrame(step):0;if(!raf)cx.clearRect(0,0,innerWidth,innerHeight)}
+window.fiestaBurst=burst;
+function tears(){if(RM||!document.body.animate)return;for(var i=0;i<16;i++){var t=document.createElement("span");t.className="flyer";t.textContent=i%4?"💧":"😭";t.style.left=Math.round(Math.random()*innerWidth)+"px";t.style.top="-40px";document.body.appendChild(t);t.animate([{transform:"translateY(0)",opacity:1},{transform:"translateY("+(innerHeight+80)+"px)",opacity:.6}],{duration:1400+Math.random()*900,delay:Math.random()*500,easing:"cubic-bezier(.4,0,.8,.6)",fill:"backwards"}).onfinish=(function(el){return function(){el.remove()}})(t)}}
+function bats(x,y){if(RM||!document.body.animate)return;for(var i=0;i<7;i++){var b=document.createElement("span");b.className="flyer";b.textContent=i%3?"🦇":"👻";b.style.left=x+"px";b.style.top=y+"px";document.body.appendChild(b);var dx=Math.round((Math.random()*2-1)*220),dy=Math.round(-150-Math.random()*250);b.animate([{transform:"translate(-50%,-50%) scale(.4)",opacity:1},{transform:"translate(calc(-50% + "+dx+"px),calc(-50% + "+dy+"px)) scale(1.2) rotate("+Math.round(dx/6)+"deg)",opacity:0}],{duration:1100+Math.random()*500,easing:"cubic-bezier(.2,.7,.3,1)"}).onfinish=(function(el){return function(){el.remove()}})(b)}}
+document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("button,a.sp");if(!b)return;
+if(b===btn){on=!on;try{localStorage.setItem("fiestaSnd",on?"on":"off")}catch(_){}lbl();if(on)SFX.pop();return}
+var r=b.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2;
+if(b.dataset.rsvp){var v=b.dataset.rsvp;if(v=="si"){SFX.fanfare();burst(x,y,110);setTimeout(function(){burst(innerWidth*.2,innerHeight*.3,50);burst(innerWidth*.8,innerHeight*.3,50)},250)}else if(v=="talvez"){SFX.boo();bats(x,y)}else{SFX.sad();tears()}return}
+if(b.dataset.boo){SFX.boo();bats(x,y);return}
+if(b.dataset.rand){SFX.roll();setTimeout(function(){SFX.fanfare();var g=document.querySelector(".big"),q=g?g.getBoundingClientRect():r;burst(q.left+q.width/2,q.top+q.height/2,90)},480);return}
+if(b.dataset.goto){SFX.whoosh();return}
+if(b.dataset.tab){SFX.tick();return}
+if(b.dataset.add){SFX.pop();return}
+if(b.dataset.del){SFX.del();return}
+if(b.classList.contains("sp"))SFX.tick()},true);
+document.addEventListener("input",function(e){var t=e.target;if(t.type==="checkbox"&&t.checked){var r=t.getBoundingClientRect();SFX.pop();burst(r.left+r.width/2,r.top+r.height/2,24)}},true);
+})();
+</script>
+</body>
+</html>
