@@ -52,14 +52,16 @@ p.n{color:var(--mut);margin:0 0 10px}
 </main>
 <script>
 var K="fiestaIvanAndy",S=null;
+var G=[{ok:false,n:"Iván"},{ok:false,n:"Andy"},{ok:false,n:"Susan"},{ok:false,n:"Kebin"},{ok:false,n:"Andrea"},{ok:false,n:"Sharuun"},{ok:false,n:"Karen"},{ok:false,n:"Alison"},{ok:false,n:"Juan"},{ok:false,n:"Lili"},{ok:false,n:"Sofi"},{ok:false,n:"Carol"},{ok:false,n:"Miki"},{ok:false,n:"Choco"},{ok:false,n:"Jan"},{ok:false,n:"Haylin"},{ok:false,n:"Mac Miller"}];
 try{S=JSON.parse(localStorage.getItem(K))}catch(e){}
 if(!S)S={
 itin:[{t:"7:00 pm",x:"Llegada, bienvenida y música de fondo"},{t:"7:30 pm",x:"Comida y bebidas"},{t:"8:30 pm",x:"Concurso de disfraces"},{t:"9:15 pm",x:"Juegos (mafia, adivina la canción)"},{t:"10:00 pm",x:"Pastel de cumpleaños"},{t:"10:30 pm",x:"Baile y karaoke"}],
-guests:[],
+guests:G.slice(),
 food:[{ok:false,x:"Pastel",who:""},{ok:false,x:"Dulces de Halloween",who:""},{ok:false,x:"Botanas",who:""},{ok:false,x:"Platillo principal",who:""},{ok:false,x:"Bebidas y hielo",who:""},{ok:false,x:"Vasos, platos y servilletas",who:""}],
 games:[{ok:false,x:"Mafia o Werewolf: roles secretos, ideal para Halloween"},{ok:false,x:"Adivina la canción con la playlist"},{ok:false,x:"Karaoke en equipos"},{ok:false,x:"La momia: envolver a un compañero con papel higiénico"},{ok:false,x:"Charadas de películas de terror"},{ok:false,x:"Verdad o reto de Halloween"}],
 awards:[{x:"Disfraz más creativo",w:""},{x:"Disfraz más terrorífico",w:""},{x:"Disfraz más cómico",w:""},{x:"Mejor disfraz en pareja o grupo",w:""}],
 songs:[],pl:"",pick:""};
+if(!S.guests||!S.guests.length){S.guests=G.slice();try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}}
 var ref=null,ex=false,RO=false,OWN=false,dirty={},busy=false,tm=null;
 function loc(){try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}}
 function save(k){loc();if(k)dirty[k]=1;if(ref&&!RO){clearTimeout(tm);tm=setTimeout(flush,700)}}
@@ -95,7 +97,7 @@ function fld(k,i,o,f){
 var a=' data-k="'+k+'" data-i="'+i+'" data-f="'+f[0]+'"';
 if(f[1]=="check")return '<input type="checkbox" aria-label="Listo"'+a+(o[f[0]]?" checked":"")+'>';
 if(f[1]=="sel")return '<select aria-label="Momento"'+a+'>'+MO.map(function(m){return "<option"+(o.m==m?" selected":"")+">"+m+"</option>"}).join("")+"</select>";
-return '<input type="text" class="'+(f[3]||"")+'" placeholder="'+f[2]+'" value="'+esc(o[f[0]])+'"'+a+'>'}
+return (k=="guests"&&f[0]=="n"?'<span aria-hidden="true">⭐</span>':'')+'<input type="text" class="'+(f[3]||"")+'" placeholder="'+f[2]+'" value="'+esc(o[f[0]])+'"'+a+'>'}
 function rows(k){
 return '<div class="card">'+S[k].map(function(o,i){
 return '<div class="r">'+SC[k].map(function(f){return fld(k,i,o,f)}).join("")+'<button class="x" data-del="'+k+'" data-i="'+i+'" aria-label="Quitar">×</button></div>'}).join("")+
