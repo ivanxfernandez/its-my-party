@@ -61,6 +61,9 @@ nav button[aria-pressed="true"]{color:var(--on2)}
 .ppl em{font-style:normal;display:flex;flex-direction:column;line-height:1.2}
 .ppl small{font-weight:400;font-size:12px;color:var(--mut)}
 .sp{flex:none;color:var(--ac2);text-decoration:none;font-size:16px;padding:6px 8px}
+.r.s{flex-wrap:wrap;gap:2px 8px}
+.r.s input[type=text]{flex:1 1 100%}
+.r.s select{flex:0 0 auto;margin-right:auto;color:var(--mut)}
 .acts{display:flex;flex-wrap:wrap;gap:10px}
 </style>
 </head>
@@ -126,7 +129,7 @@ if(f[1]=="sel")return '<select aria-label="Momento"'+a+'>'+MO.map(function(m){re
 return (k=="guests"&&f[0]=="n"?'<span aria-hidden="true">⭐</span>':'')+'<input type="text" class="'+(f[3]||"")+'" placeholder="'+f[2]+'" value="'+esc(o[f[0]])+'"'+a+'>'}
 function rows(k){
 return '<div class="card">'+S[k].map(function(o,i){
-return '<div class="r">'+SC[k].map(function(f){return fld(k,i,o,f)}).join("")+(k=="songs"&&o.x?'<a class="sp" target="_blank" rel="noopener" aria-label="Buscar en Spotify" href="https://open.spotify.com/search/'+encodeURIComponent(o.x.replace(/\s*\(.*\)\s*$/,""))+'">▶</a>':'')+'<button class="x" data-del="'+k+'" data-i="'+i+'" aria-label="Quitar">×</button></div>'}).join("")+
+return '<div class="r'+(k=="songs"?' s':'')+'">'+SC[k].map(function(f){return fld(k,i,o,f)}).join("")+(k=="songs"&&o.x?'<a class="sp" target="_blank" rel="noopener" aria-label="Buscar en Spotify" href="https://open.spotify.com/search/'+encodeURIComponent(o.x.replace(/\s*\(.*\)\s*$/,""))+'">▶</a>':'')+'<button class="x" data-del="'+k+'" data-i="'+i+'" aria-label="Quitar">×</button></div>'}).join("")+
 '<button class="add" data-add="'+k+'">+ Agregar</button></div>'}
 function cnt(k,f){return S[k].filter(function(o){return o[f]}).length}
 function view(){
