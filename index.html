@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>It’s my party and I’ll cry if I want to</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Rubik:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F5EEFF;--card:#fff;--ink:#2A1546;--mut:#6B5A85;--ac:#C44A05;--on:#fff;--ac2:#7B2FD0;--ln:#DCCDF2;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1D0E33;--card:#2C1850;--ink:#F3ECFF;--mut:#B9A6D8;--ac:#FF8A2A;--on:#1D0E33;--ac2:#C58BFF;--ln:#46306F}}
+:root[data-theme="dark"]{--bg:#1D0E33;--card:#2C1850;--ink:#F3ECFF;--mut:#B9A6D8;--ac:#FF8A2A;--on:#1D0E33;--ac2:#C58BFF;--ln:#46306F}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 Rubik,system-ui,sans-serif}
+main{max-width:720px;margin:0 auto;padding:28px 16px 48px}
+h1{font:400 clamp(30px,8vw,48px)/1.1 "Bagel Fat One",Rubik,system-ui,sans-serif;margin:0 0 8px;letter-spacing:.2px}
+.sub{color:var(--mut);margin:0 0 14px}
+.pill{display:inline-block;background:var(--ac);color:var(--on);font-weight:600;border-radius:999px;padding:6px 16px}
+nav{display:flex;gap:8px;overflow-x:auto;margin:22px 0 16px;padding-bottom:4px}
+nav button{flex:none;border:1.5px solid var(--ln);background:var(--card);color:var(--ink);border-radius:999px;padding:8px 16px;font:500 15px Rubik,system-ui,sans-serif;cursor:pointer}
+nav button[aria-pressed="true"]{background:var(--ac2);border-color:var(--ac2);color:#fff}
+button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+.card{background:var(--card);border:1.5px solid var(--ln);border-radius:16px;padding:14px}
+.r{display:flex;gap:8px;align-items:center;padding:6px 0;border-bottom:1px solid var(--ln)}
+.r:last-of-type{border-bottom:0}
+input[type=text],select{font:400 16px Rubik,system-ui,sans-serif;color:var(--ink);background:transparent;border:1px solid transparent;border-radius:8px;padding:8px;min-width:0;flex:1}
+input[type=text]:hover,select:hover,input[type=text]:focus{border-color:var(--ln)}
+input.t0{flex:0 0 92px;font-weight:600;color:var(--ac2)}
+input.w{flex:0 0 38%}
+input[type=checkbox]{width:22px;height:22px;accent-color:var(--ac2);flex:none}
+.x{border:0;background:none;color:var(--mut);font-size:22px;cursor:pointer;padding:4px 8px}
+.add{margin-top:10px;border:1.5px dashed var(--ln);background:none;color:var(--ink);border-radius:10px;padding:8px 14px;font:500 15px Rubik,system-ui,sans-serif;cursor:pointer}
+.stat{font-weight:600;margin:0 0 10px}
+.big{background:var(--ac);color:var(--on);border-radius:16px;padding:18px;font:400 24px/1.2 "Bagel Fat One",Rubik,system-ui,sans-serif;margin-bottom:12px}
+.go{border:0;background:var(--ac2);color:#fff;border-radius:10px;padding:10px 16px;font:600 15px Rubik,system-ui,sans-serif;cursor:pointer;text-decoration:none;display:inline-block}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.chips span{border:1.5px solid var(--ln);background:var(--card);border-radius:999px;padding:5px 12px}
+h2{font:400 22px "Bagel Fat One",Rubik,system-ui,sans-serif;margin:18px 0 8px}
+p.n{color:var(--mut);margin:0 0 10px}
+</style>
+</head>
+<body>
+<main>
+<h1>It’s my party and I’ll cry if I want to</h1>
+<p class="sub">Cumple de Iván y Andy, viernes 30 de octubre, en casa de Iván. Disfraces bienvenidos.</p>
+<span class="pill" id="cd"></span>
+<p class="n" id="note" hidden></p>
+<nav id="tabs" aria-label="Secciones"></nav>
+<section id="v"></section>
+</main>
+<script>
+var K="fiestaIvanAndy",S=null;
+try{S=JSON.parse(localStorage.getItem(K))}catch(e){}
+if(!S)S={
+itin:[{t:"7:00 pm",x:"Llegada, bienvenida y música de fondo"},{t:"7:30 pm",x:"Comida y bebidas"},{t:"8:30 pm",x:"Concurso de disfraces"},{t:"9:15 pm",x:"Juegos (mafia, adivina la canción)"},{t:"10:00 pm",x:"Pastel de cumpleaños"},{t:"10:30 pm",x:"Baile y karaoke"}],
+guests:[],
+food:[{ok:false,x:"Pastel",who:""},{ok:false,x:"Dulces de Halloween",who:""},{ok:false,x:"Botanas",who:""},{ok:false,x:"Platillo principal",who:""},{ok:false,x:"Bebidas y hielo",who:""},{ok:false,x:"Vasos, platos y servilletas",who:""}],
+games:[{ok:false,x:"Mafia o Werewolf: roles secretos, ideal para Halloween"},{ok:false,x:"Adivina la canción con la playlist"},{ok:false,x:"Karaoke en equipos"},{ok:false,x:"La momia: envolver a un compañero con papel higiénico"},{ok:false,x:"Charadas de películas de terror"},{ok:false,x:"Verdad o reto de Halloween"}],
+awards:[{x:"Disfraz más creativo",w:""},{x:"Disfraz más terrorífico",w:""},{x:"Disfraz más cómico",w:""},{x:"Mejor disfraz en pareja o grupo",w:""}],
+songs:[],pl:"",pick:""};
+var ref=null,ex=false,RO=false,OWN=false,dirty={},busy=false,tm=null;
+function loc(){try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}}
+function save(k){loc();if(k)dirty[k]=1;if(ref&&!RO){clearTimeout(tm);tm=setTimeout(flush,700)}}
+async function flush(){
+if(busy){tm=setTimeout(flush,400);return}
+var ks=Object.keys(dirty);if(!ks.length)return;
+dirty={};busy=true;var o={};ks.forEach(function(k){o[k]=S[k]});
+try{if(ex)await ref.update(o);else{await ref.set(S);ex=true}}
+catch(e){try{await ref.set(S);ex=true}catch(e2){RO=true;note()}}
+busy=false}
+function seed(){if(ref&&!ex&&OWN&&!RO&&!busy){busy=true;ref.set(S).then(function(){ex=true},function(){}).then(function(){busy=false})}}
+function note(){var n=document.getElementById("note");n.hidden=false;n.textContent="Esta versión es solo de lectura: para editar necesitas acceso de colaborador.";view()}
+function apply(snap){
+ex=snap.exists;
+if(!ex){seed();return}
+if(snap.metadata.hasPendingWrites)return;
+var d=snap.data(),a=document.activeElement,ch=false;
+Object.keys(S).forEach(function(k){if(dirty[k]||d[k]===undefined)return;if(JSON.stringify(d[k])!==JSON.stringify(S[k])){S[k]=JSON.parse(JSON.stringify(d[k]));ch=true}});
+if(ch){loc();if(!(a&&a.tagName=="INPUT"&&a.type=="text"&&document.getElementById("v").contains(a)))view()}}
+function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;")}
+var MO=["Llegada","Comida","Baile","Pastel","Karaoke"];
+var SC={
+itin:[["t","text","Hora","t0"],["x","text","Qué pasa"]],
+guests:[["ok","check"],["n","text","Nombre"]],
+food:[["ok","check"],["x","text","Qué falta"],["who","text","Quién lo trae","w"]],
+games:[["ok","check"],["x","text","Juego"]],
+awards:[["x","text","Premio"],["w","text","Ganador","w"]],
+songs:[["x","text","Canción y artista"],["m","sel"]]};
+var NEW={itin:{t:"",x:""},guests:{ok:false,n:""},food:{ok:false,x:"",who:""},games:{ok:false,x:""},awards:{x:"",w:""},songs:{x:"",m:"Baile"}};
+var TABS=[["itin","Itinerario"],["guests","Invitados"],["food","Comida"],["games","Juegos"],["cos","Disfraces"],["mus","Música"]];
+var tab="itin";
+function fld(k,i,o,f){
+var a=' data-k="'+k+'" data-i="'+i+'" data-f="'+f[0]+'"';
+if(f[1]=="check")return '<input type="checkbox" aria-label="Listo"'+a+(o[f[0]]?" checked":"")+'>';
+if(f[1]=="sel")return '<select aria-label="Momento"'+a+'>'+MO.map(function(m){return "<option"+(o.m==m?" selected":"")+">"+m+"</option>"}).join("")+"</select>";
+return '<input type="text" class="'+(f[3]||"")+'" placeholder="'+f[2]+'" value="'+esc(o[f[0]])+'"'+a+'>'}
+function rows(k){
+return '<div class="card">'+S[k].map(function(o,i){
+return '<div class="r">'+SC[k].map(function(f){return fld(k,i,o,f)}).join("")+'<button class="x" data-del="'+k+'" data-i="'+i+'" aria-label="Quitar">×</button></div>'}).join("")+
+'<button class="add" data-add="'+k+'">+ Agregar</button></div>'}
+function cnt(k,f){return S[k].filter(function(o){return o[f]}).length}
+function view(){
+var h="";
+if(tab=="itin")h='<p class="n">Toca cualquier hora o actividad para cambiarla.</p>'+rows("itin");
+if(tab=="guests")h='<p class="stat">'+cnt("guests","ok")+" confirmados de "+S.guests.length+' invitados</p>'+rows("guests");
+if(tab=="food")h='<p class="stat">'+cnt("food","ok")+" de "+S.food.length+' pendientes listos</p>'+rows("food");
+if(tab=="games")h=(S.pick?'<div class="big">'+esc(S.pick)+"</div>":"")+'<button class="go" data-rand="1">Sacar un juego al azar</button><h2>Lista de juegos</h2>'+rows("games");
+if(tab=="cos")h='<p class="n">Ideas si no saben de qué ir:</p><div class="chips">'+["Vampiro","Bruja","Esqueleto","Fantasma","Momia","Zombi","Catrina","Personaje de terror","Disfraz en pareja"].map(function(c){return "<span>"+c+"</span>"}).join("")+"</div><h2>Premios del concurso</h2>"+rows("awards");
+if(tab=="mus"){var ok=/^https?:\/\//i.test(S.pl);h='<div class="card"><p class="n">Pega el link de tu playlist de Spotify o YouTube.</p><div class="r"><input type="text" id="pl" placeholder="https://..." value="'+esc(S.pl)+'" aria-label="Link de la playlist"></div><p style="margin:10px 0 0"><a class="go" id="op" target="_blank" rel="noopener"'+(ok?' href="'+esc(S.pl)+'"':' aria-disabled="true" style="opacity:.5"')+">Abrir playlist</a></p></div><h2>Canciones por momento</h2>"+rows("songs")}
+document.getElementById("v").innerHTML=h;
+document.getElementById("tabs").innerHTML=TABS.map(function(t){return '<button data-tab="'+t[0]+'" aria-pressed="'+(t[0]==tab)+'">'+t[1]+"</button>"}).join("");if(RO)document.querySelectorAll("#v input,#v select,#v button").forEach(function(e){e.disabled=true})}
+document.addEventListener("click",function(e){
+var b=e.target.closest("button");if(!b)return;
+if(b.dataset.tab){tab=b.dataset.tab;view();return}
+if(b.dataset.add){var k=b.dataset.add;S[k].push(JSON.parse(JSON.stringify(NEW[k])));save(k);view();var t=document.querySelectorAll('input[type="text"][data-k="'+k+'"]');if(t.length)t[t.length-SC[k].filter(function(f){return f[1]=="text"}).length].focus();return}
+if(b.dataset.del){S[b.dataset.del].splice(+b.dataset.i,1);save(b.dataset.del);view();return}
+if(b.dataset.rand){var l=S.games.filter(function(g){return !g.ok&&g.x});S.pick=l.length?l[Math.floor(Math.random()*l.length)].x:"Ya jugaron todo. ¡Agreguen más juegos!";save("pick");view()}});
+document.addEventListener("input",function(e){
+var t=e.target;
+if(t.id=="pl"){S.pl=t.value.trim();var a=document.getElementById("op");if(/^https?:\/\//i.test(S.pl)){a.href=S.pl;a.style.opacity=1;a.removeAttribute("aria-disabled")}else{a.removeAttribute("href");a.style.opacity=.5}save("pl");return}
+if(!t.dataset.k)return;
+var o=S[t.dataset.k][+t.dataset.i];
+o[t.dataset.f]=t.type=="checkbox"?t.checked:t.value;save(t.dataset.k);
+if(t.type=="checkbox")view()});
+function days(){var n=new Date(),a=new Date(n.getFullYear(),n.getMonth(),n.getDate()),b=new Date(2026,9,30);return Math.round((b-a)/864e5)}
+var d=days(),c=document.getElementById("cd");
+c.textContent=d>1?"Faltan "+d+" días":d==1?"Es mañana":d==0?"¡Hoy es el día!":"¡Gracias por venir!";
+view();
+try{
+claude.use("db").then(function(db){if(!db)return;ref=db.doc("party/state");ref.onSnapshot(apply,function(){ref=null})}).catch(function(){});
+claude.use("user").then(function(u){if(!u)return;return Promise.all([u.isOwner(),u.can("data.write")]).then(function(v){OWN=v[0];if(v[1]===false&&!v[0]){RO=true;note()}else seed()})}).catch(function(){});
+}catch(e){}
+</script>
+</body>
+</html>
