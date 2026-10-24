@@ -116,7 +116,7 @@ if(ch){loc();if(!(a&&a.tagName=="INPUT"&&a.type=="text"&&document.getElementById
 function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;")}
 var FAV={"Lili":"Rata Blanca","Kebin":"Mac Miller","Sofi":"ADÉLA","Juan":"Twenty One Pilots","Carol":"Alejandra Guzmán","Sharuun":"Black Eyed Peas","Ivxn":"Joji y Twenty One Pilots","Andy":"Héctor Lavoe","Choco":"Tito El Bambino"};
 var IGU={"Ivxn":"ivanxfernandez","Andy":"badassydna","Susan":"sus4n._","Juan":"lehnho_","Jan":"_jan.1_","Miki":"mikingmoran","Sharuun":"sharoonmoreira","Andrea":"andra.maquiz"};
-function chip(o,i,P){var n=o.n.trim(),u=IGU[n],av=u?'<img class="av" src="img/'+u+'.jpg" alt="" loading="lazy">':'<i style="background:'+P[i%P.length]+'" aria-hidden="true">'+esc(n.charAt(0).toUpperCase())+'</i>';
+function chip(o,i,P){var n=o.n.trim(),u=IGU[n],av=u?'<img class="av" src="img/'+u+'.jpg" alt="">':'<i style="background:'+P[i%P.length]+'" aria-hidden="true">'+esc(n.charAt(0).toUpperCase())+'</i>';
 return '<span>'+av+'<em>'+esc(o.n)+(FAV[n]?'<small>♪ '+FAV[n]+'</small>':'')+(u?'<a class="ig" href="https://www.instagram.com/'+u+'/" target="_blank" rel="noopener">@'+u+'</a>':'')+'</em></span>'}
 var MO=["Llegada","Comida","Baile","Pastel","Karaoke"];
 var SC={
