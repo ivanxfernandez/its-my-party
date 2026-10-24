@@ -46,6 +46,19 @@ h2{letter-spacing:1px;color:var(--ac2)}
 .big{letter-spacing:1px}
 nav button[aria-pressed="true"]{color:var(--on2)}
 .go{color:var(--on2)}
+.hero{position:relative;overflow:hidden;background:linear-gradient(160deg,#2A1638,#18131F 60%);border:1.5px solid var(--ac);border-radius:20px;padding:26px 20px 22px;box-shadow:0 0 34px rgba(255,122,26,.18);margin-bottom:14px}
+.hero .k{margin:0 0 6px;color:var(--ac2);font-weight:700;letter-spacing:2px;text-transform:uppercase;font-size:13px}
+.hero h2{font-size:40px;line-height:1.05;margin:0 0 10px;color:var(--ink)}
+.hero p{margin:0;color:var(--ink)}
+.hero .bg{position:absolute;right:-6px;bottom:-14px;font-size:84px;opacity:.16;pointer-events:none}
+.info{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:14px}
+.info div{background:var(--card);border:1.5px solid var(--ln);border-radius:14px;padding:12px 14px}
+.info b{display:block;color:var(--ac);font-size:13px;letter-spacing:1px;text-transform:uppercase}
+.info span{display:block;font-weight:600;line-height:1.35;margin-top:2px}
+.ppl{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.ppl span{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1.5px solid var(--ln);border-radius:999px;padding:4px 14px 4px 4px;font-weight:600}
+.ppl i{font-style:normal;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-weight:700;color:#0D0A12}
+.acts{display:flex;flex-wrap:wrap;gap:10px}
 </style>
 </head>
 <body>
@@ -62,7 +75,6 @@ var K="fiestaIvanAndy",S=null;
 var G=[{ok:false,n:"Ivxn"},{ok:false,n:"Andy"},{ok:false,n:"Susan"},{ok:false,n:"Kebin"},{ok:false,n:"Andrea"},{ok:false,n:"Sharuun"},{ok:false,n:"Karen"},{ok:false,n:"Alison"},{ok:false,n:"Juan"},{ok:false,n:"Lili"},{ok:false,n:"Sofi"},{ok:false,n:"Carol"},{ok:false,n:"Miki"},{ok:false,n:"Choco"},{ok:false,n:"Jan"},{ok:false,n:"Haylin"},{ok:false,n:"Mac Miller"}];
 try{S=JSON.parse(localStorage.getItem(K))}catch(e){}
 if(!S)S={
-itin:[{t:"7:00 pm",x:"Llegada, bienvenida y música de fondo"},{t:"7:30 pm",x:"Comida y bebidas"},{t:"8:30 pm",x:"Concurso de disfraces"},{t:"9:15 pm",x:"Juegos (mafia, adivina la canción)"},{t:"10:00 pm",x:"Pastel de cumpleaños"},{t:"10:30 pm",x:"Baile y karaoke"}],
 guests:G.slice(),
 food:[{ok:false,x:"Pastel",who:""},{ok:false,x:"Dulces de Halloween",who:""},{ok:false,x:"Botanas",who:""},{ok:false,x:"Platillo principal",who:""},{ok:false,x:"Bebidas y hielo",who:""},{ok:false,x:"Vasos, platos y servilletas",who:""}],
 games:[{ok:false,x:"Mafia o Werewolf: roles secretos, ideal para Halloween"},{ok:false,x:"Adivina la canción con la playlist"},{ok:false,x:"Karaoke en equipos"},{ok:false,x:"La momia: envolver a un compañero con papel higiénico"},{ok:false,x:"Charadas de películas de terror"},{ok:false,x:"Verdad o reto de Halloween"}],
@@ -92,15 +104,14 @@ if(ch){loc();if(!(a&&a.tagName=="INPUT"&&a.type=="text"&&document.getElementById
 function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;")}
 var MO=["Llegada","Comida","Baile","Pastel","Karaoke"];
 var SC={
-itin:[["t","text","Hora","t0"],["x","text","Qué pasa"]],
 guests:[["ok","check"],["n","text","Nombre"]],
 food:[["ok","check"],["x","text","Qué falta"],["who","text","Quién lo trae","w"]],
 games:[["ok","check"],["x","text","Juego"]],
 awards:[["x","text","Premio"],["w","text","Ganador","w"]],
 songs:[["x","text","Canción y artista"],["m","sel"]]};
-var NEW={itin:{t:"",x:""},guests:{ok:false,n:""},food:{ok:false,x:"",who:""},games:{ok:false,x:""},awards:{x:"",w:""},songs:{x:"",m:"Baile"}};
-var TABS=[["itin","Itinerario"],["guests","Invitados"],["food","Comida"],["games","Juegos"],["cos","Disfraces"],["mus","Música"],["dir","A DONDE VOY"]];
-var tab="itin";
+var NEW={guests:{ok:false,n:""},food:{ok:false,x:"",who:""},games:{ok:false,x:""},awards:{x:"",w:""},songs:{x:"",m:"Baile"}};
+var TABS=[["inv","Invitación"],["guests","Invitados"],["food","Comida"],["games","Juegos"],["cos","Disfraces"],["mus","Música"],["dir","A DONDE VOY"]];
+var tab="inv";
 function fld(k,i,o,f){
 var a=' data-k="'+k+'" data-i="'+i+'" data-f="'+f[0]+'"';
 if(f[1]=="check")return '<input type="checkbox" aria-label="Listo"'+a+(o[f[0]]?" checked":"")+'>';
@@ -113,7 +124,11 @@ return '<div class="r">'+SC[k].map(function(f){return fld(k,i,o,f)}).join("")+'<
 function cnt(k,f){return S[k].filter(function(o){return o[f]}).length}
 function view(){
 var h="";
-if(tab=="itin")h='<p class="n">Toca cualquier hora o actividad para cambiarla.</p>'+rows("itin");
+if(tab=="inv"){var P=["#FF7A1A","#8BFF5A","#C58BFF","#FFD23F"],g=S.guests.filter(function(o){return o.n&&o.n.trim()});
+h='<div class="hero"><span class="bg" aria-hidden="true">🎃</span><p class="k">Estás invitad@</p><h2>Halloween + doble cumple</h2><p>Iván y Andy cumplen años y lo celebramos juntos en plena semana de Halloween. Ven disfrazad@, con ganas de cantar, jugar y conocer gente nueva.</p></div>'+
+'<div class="info"><div><b>Cuándo</b><span>Viernes 30 de octubre, 7:00 pm</span></div><div><b>Dónde</b><span>Casa de Iván, Jardines de Verona</span></div><div><b>Dress code</b><span>Disfraz obligatorio (hay concurso)</span></div><div><b>Qué habrá</b><span>Comida, juegos, karaoke y pastel</span></div></div>'+
+'<h2>Quién viene</h2><p class="n">Para que ya se ubiquen antes de llegar: '+g.length+' personas y contando.</p><div class="ppl">'+g.map(function(o,i){return '<span><i style="background:'+P[i%P.length]+'" aria-hidden="true">'+esc(o.n.trim().charAt(0).toUpperCase())+'</i>'+esc(o.n)+'</span>'}).join("")+'</div>'+
+'<div class="acts"><button class="go" data-goto="dir">Cómo llegar</button><button class="go" data-goto="cos" style="background:var(--ac);color:var(--on)">Ideas de disfraz</button></div>'}
 if(tab=="guests")h='<p class="stat">'+cnt("guests","ok")+" confirmados de "+S.guests.length+' invitados</p>'+rows("guests");
 if(tab=="food")h='<p class="stat">'+cnt("food","ok")+" de "+S.food.length+' pendientes listos</p>'+rows("food");
 if(tab=="games")h=(S.pick?'<div class="big">'+esc(S.pick)+"</div>":"")+'<button class="go" data-rand="1">Sacar un juego al azar</button><h2>Lista de juegos</h2>'+rows("games");
@@ -125,6 +140,7 @@ document.getElementById("tabs").innerHTML=TABS.map(function(t){return '<button d
 document.addEventListener("click",function(e){
 var b=e.target.closest("button");if(!b)return;
 if(b.dataset.tab){tab=b.dataset.tab;view();return}
+if(b.dataset.goto){tab=b.dataset.goto;view();window.scrollTo(0,0);return}
 if(b.dataset.add){var k=b.dataset.add;S[k].push(JSON.parse(JSON.stringify(NEW[k])));save(k);view();var t=document.querySelectorAll('input[type="text"][data-k="'+k+'"]');if(t.length)t[t.length-SC[k].filter(function(f){return f[1]=="text"}).length].focus();return}
 if(b.dataset.del){S[b.dataset.del].splice(+b.dataset.i,1);save(b.dataset.del);view();return}
 if(b.dataset.rand){var l=S.games.filter(function(g){return !g.ok&&g.x});S.pick=l.length?l[Math.floor(Math.random()*l.length)].x:"Ya jugaron todo. ¡Agreguen más juegos!";save("pick");view()}});
