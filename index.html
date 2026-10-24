@@ -6,39 +6,46 @@
 <title>It’s my party and I’ll cry if I want to</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Rubik:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Creepster&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#F5EEFF;--card:#fff;--ink:#2A1546;--mut:#6B5A85;--ac:#C44A05;--on:#fff;--ac2:#7B2FD0;--ln:#DCCDF2;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1D0E33;--card:#2C1850;--ink:#F3ECFF;--mut:#B9A6D8;--ac:#FF8A2A;--on:#1D0E33;--ac2:#C58BFF;--ln:#46306F}}
-:root[data-theme="dark"]{--bg:#1D0E33;--card:#2C1850;--ink:#F3ECFF;--mut:#B9A6D8;--ac:#FF8A2A;--on:#1D0E33;--ac2:#C58BFF;--ln:#46306F}
+:root{--bg:#0D0A12;--card:#18131F;--ink:#F6EEE3;--mut:#A99CB0;--ac:#FF7A1A;--on:#0D0A12;--ac2:#8BFF5A;--on2:#0D0A12;--ln:#2E2538;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 Rubik,system-ui,sans-serif}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 "Nunito",system-ui,sans-serif}
 main{max-width:720px;margin:0 auto;padding:28px 16px 48px}
-h1{font:400 clamp(30px,8vw,48px)/1.1 "Bagel Fat One",Rubik,system-ui,sans-serif;margin:0 0 8px;letter-spacing:.2px}
+h1{font:400 clamp(30px,8vw,48px)/1.1 "Creepster","Nunito",system-ui,sans-serif;margin:0 0 8px;letter-spacing:.2px}
 .sub{color:var(--mut);margin:0 0 14px}
 .pill{display:inline-block;background:var(--ac);color:var(--on);font-weight:600;border-radius:999px;padding:6px 16px}
 nav{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 16px}
-nav button{flex:none;border:1.5px solid var(--ln);background:var(--card);color:var(--ink);border-radius:999px;padding:8px 16px;font:500 15px Rubik,system-ui,sans-serif;cursor:pointer}
+nav button{flex:none;border:1.5px solid var(--ln);background:var(--card);color:var(--ink);border-radius:999px;padding:8px 16px;font:500 15px "Nunito",system-ui,sans-serif;cursor:pointer}
 nav button[aria-pressed="true"]{background:var(--ac2);border-color:var(--ac2);color:#fff}
 button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
 .card{background:var(--card);border:1.5px solid var(--ln);border-radius:16px;padding:14px}
 .r{display:flex;gap:8px;align-items:center;padding:6px 0;border-bottom:1px solid var(--ln)}
 .r:last-of-type{border-bottom:0}
-input[type=text],select{font:400 16px Rubik,system-ui,sans-serif;color:var(--ink);background:transparent;border:1px solid transparent;border-radius:8px;padding:8px;min-width:0;flex:1}
+input[type=text],select{font:400 16px "Nunito",system-ui,sans-serif;color:var(--ink);background:transparent;border:1px solid transparent;border-radius:8px;padding:8px;min-width:0;flex:1}
 input[type=text]:hover,select:hover,input[type=text]:focus{border-color:var(--ln)}
 input.t0{flex:0 0 92px;font-weight:600;color:var(--ac2)}
 input.w{flex:0 0 38%}
 input[type=checkbox]{width:22px;height:22px;accent-color:var(--ac2);flex:none}
 .x{border:0;background:none;color:var(--mut);font-size:22px;cursor:pointer;padding:4px 8px}
-.add{margin-top:10px;border:1.5px dashed var(--ln);background:none;color:var(--ink);border-radius:10px;padding:8px 14px;font:500 15px Rubik,system-ui,sans-serif;cursor:pointer}
+.add{margin-top:10px;border:1.5px dashed var(--ln);background:none;color:var(--ink);border-radius:10px;padding:8px 14px;font:500 15px "Nunito",system-ui,sans-serif;cursor:pointer}
 .stat{font-weight:600;margin:0 0 10px}
-.big{background:var(--ac);color:var(--on);border-radius:16px;padding:18px;font:400 24px/1.2 "Bagel Fat One",Rubik,system-ui,sans-serif;margin-bottom:12px}
-.go{border:0;background:var(--ac2);color:#fff;border-radius:10px;padding:10px 16px;font:600 15px Rubik,system-ui,sans-serif;cursor:pointer;text-decoration:none;display:inline-block}
+.big{background:var(--ac);color:var(--on);border-radius:16px;padding:18px;font:400 24px/1.2 "Creepster","Nunito",system-ui,sans-serif;margin-bottom:12px}
+.go{border:0;background:var(--ac2);color:#fff;border-radius:10px;padding:10px 16px;font:600 15px "Nunito",system-ui,sans-serif;cursor:pointer;text-decoration:none;display:inline-block}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
 .chips span{border:1.5px solid var(--ln);background:var(--card);border-radius:999px;padding:5px 12px}
-h2{font:400 22px "Bagel Fat One",Rubik,system-ui,sans-serif;margin:18px 0 8px}
+h2{font:400 22px "Creepster","Nunito",system-ui,sans-serif;margin:18px 0 8px}
 p.n{color:var(--mut);margin:0 0 10px}
+
+body{background:radial-gradient(900px 420px at 50% -120px,rgba(255,122,26,.28),transparent 70%),var(--bg)}
+h1{letter-spacing:1.5px;color:var(--ac);text-shadow:0 0 18px rgba(255,122,26,.45)}
+h1::after{content:" 🦇";font-size:.7em}
+h2{letter-spacing:1px;color:var(--ac2)}
+.card{box-shadow:0 0 0 1px rgba(139,255,90,.06),0 10px 30px rgba(0,0,0,.4)}
+.big{letter-spacing:1px}
+nav button[aria-pressed="true"]{color:var(--on2)}
+.go{color:var(--on2)}
 </style>
 </head>
 <body>
