@@ -52,7 +52,7 @@ p.n{color:var(--mut);margin:0 0 10px}
 </main>
 <script>
 var K="fiestaIvanAndy",S=null;
-var G=[{ok:false,n:"Iván"},{ok:false,n:"Andy"},{ok:false,n:"Susan"},{ok:false,n:"Kebin"},{ok:false,n:"Andrea"},{ok:false,n:"Sharuun"},{ok:false,n:"Karen"},{ok:false,n:"Alison"},{ok:false,n:"Juan"},{ok:false,n:"Lili"},{ok:false,n:"Sofi"},{ok:false,n:"Carol"},{ok:false,n:"Miki"},{ok:false,n:"Choco"},{ok:false,n:"Jan"},{ok:false,n:"Haylin"},{ok:false,n:"Mac Miller"}];
+var G=[{ok:false,n:"Ivxn"},{ok:false,n:"Andy"},{ok:false,n:"Susan"},{ok:false,n:"Kebin"},{ok:false,n:"Andrea"},{ok:false,n:"Sharuun"},{ok:false,n:"Karen"},{ok:false,n:"Alison"},{ok:false,n:"Juan"},{ok:false,n:"Lili"},{ok:false,n:"Sofi"},{ok:false,n:"Carol"},{ok:false,n:"Miki"},{ok:false,n:"Choco"},{ok:false,n:"Jan"},{ok:false,n:"Haylin"},{ok:false,n:"Mac Miller"}];
 try{S=JSON.parse(localStorage.getItem(K))}catch(e){}
 if(!S)S={
 itin:[{t:"7:00 pm",x:"Llegada, bienvenida y música de fondo"},{t:"7:30 pm",x:"Comida y bebidas"},{t:"8:30 pm",x:"Concurso de disfraces"},{t:"9:15 pm",x:"Juegos (mafia, adivina la canción)"},{t:"10:00 pm",x:"Pastel de cumpleaños"},{t:"10:30 pm",x:"Baile y karaoke"}],
@@ -61,6 +61,7 @@ food:[{ok:false,x:"Pastel",who:""},{ok:false,x:"Dulces de Halloween",who:""},{ok
 games:[{ok:false,x:"Mafia o Werewolf: roles secretos, ideal para Halloween"},{ok:false,x:"Adivina la canción con la playlist"},{ok:false,x:"Karaoke en equipos"},{ok:false,x:"La momia: envolver a un compañero con papel higiénico"},{ok:false,x:"Charadas de películas de terror"},{ok:false,x:"Verdad o reto de Halloween"}],
 awards:[{x:"Disfraz más creativo",w:""},{x:"Disfraz más terrorífico",w:""},{x:"Disfraz más cómico",w:""},{x:"Mejor disfraz en pareja o grupo",w:""}],
 songs:[],pl:"",pick:""};
+if(S.guests)S.guests.forEach(function(g){if(g.n=="Iván")g.n="Ivxn"});
 if(!S.guests||!S.guests.length){S.guests=G.slice();try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}}
 var ref=null,ex=false,RO=false,OWN=false,dirty={},busy=false,tm=null;
 function loc(){try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}}
