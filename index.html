@@ -74,6 +74,31 @@ nav button[aria-pressed="true"]{color:var(--on2)}
 main{position:relative;z-index:1}
 .spooky{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
 .spooky span{position:absolute;bottom:-60px;font-size:28px;opacity:.22}
+.rsvp{background:var(--card);border:1.5px solid var(--ac2);border-radius:18px;padding:16px;margin-bottom:14px;box-shadow:0 0 28px rgba(139,255,90,.12)}
+.rsvp h2{margin:0 0 10px}
+.rsvp label{display:block;font-weight:700;font-size:14px;margin-bottom:6px;color:var(--mut)}
+.rsvp select{width:100%;border:1.5px solid var(--ln);background:var(--bg);font-weight:600;padding:10px 12px;margin-bottom:12px}
+.rb{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.rb button{border:1.5px solid var(--ln);background:var(--bg);color:var(--ink);border-radius:14px;padding:12px 6px;font:700 15px "Nunito",system-ui,sans-serif;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;min-height:64px}
+.rb button i{font-style:normal;font-size:24px;line-height:1}
+.rb button:disabled{opacity:.45;cursor:not-allowed}
+.rb button[aria-pressed="true"][data-rsvp="si"]{background:var(--ac2);border-color:var(--ac2);color:#0D0A12}
+.rb button[aria-pressed="true"][data-rsvp="talvez"]{background:#FFD23F;border-color:#FFD23F;color:#0D0A12}
+.rb button[aria-pressed="true"][data-rsvp="no"]{background:#3A3142;border-color:#6E6478}
+.rmsg{margin:12px 0 0;font-weight:700}
+.rcount{margin:6px 0 0;color:var(--mut);font-size:14px}
+.demo{background:rgba(255,210,63,.12);border:1.5px dashed #FFD23F;border-radius:12px;padding:10px 12px;margin:0 0 14px;font-size:14px}
+.ppl span{position:relative}
+.ppl .bd{position:absolute;left:30px;top:28px;width:18px;height:18px;border-radius:50%;font-size:11px;font-weight:800;font-style:normal;display:grid;place-items:center;border:2px solid var(--card);color:#0D0A12}
+.ppl .st-si .bd{background:var(--ac2)}
+.ppl .st-talvez .bd{background:#FFD23F}
+.ppl .st-no{opacity:.45}
+.ppl .st-no .bd{background:#A99CB0}
+.gs{flex:0 0 auto;font-size:12px;font-weight:700;border-radius:999px;padding:3px 9px;border:1.5px solid var(--ln);color:var(--mut)}
+.gs.st-si{background:var(--ac2);border-color:var(--ac2);color:#0D0A12}
+.gs.st-talvez{background:#FFD23F;border-color:#FFD23F;color:#0D0A12}
+.gs.st-no{background:#3A3142;color:var(--ink)}
+@media (prefers-reduced-motion:no-preference){.rb button{transition:transform .15s}.rb button:not(:disabled):active{transform:scale(.93)}.rb button[aria-pressed="true"] i{animation:bounce .6s cubic-bezier(.2,1.8,.4,1)}@keyframes bounce{from{transform:scale(.4) rotate(-20deg)}}}
 #fx{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:50}
 #snd{position:fixed;z-index:60;right:calc(14px + env(safe-area-inset-right,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px));width:48px;height:48px;border-radius:50%;border:1.5px solid var(--ln);background:var(--card);color:var(--ink);font-size:22px;line-height:1;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.45)}
 .hero .bg{pointer-events:auto;background:none;border:0;cursor:pointer;padding:0;line-height:1;opacity:.3}
@@ -149,11 +174,25 @@ function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/"/g,"
 var FAV={"Lili":"Rata Blanca","Kebin":"Mac Miller","Sofi":"ADÉLA","Juan":"Twenty One Pilots","Carol":"Alejandra Guzmán","Sharuun":"Black Eyed Peas","Ivxn":"Joji y Twenty One Pilots","Andy":"Héctor Lavoe","Choco":"Tito El Bambino"};
 var IGU={"Ivxn":"ivanxfernandez","Andy":"badassydna","Susan":"sus4n._","Juan":"lehnho_","Jan":"_jan.1_","Miki":"mikingmoran","Sharuun":"sharoonmoreira","Andrea":"andra.maquiz","Wavo":"parkerrodrigo","Karen":"karenabascal__","Alison":"reyesalison.d","Choco":"joosue_cabrera","Sofi":"_.angiee_","Haylin":"_.haylinng_","Mac Miller":"macmiller","Lili":"_lili.14","Kebin":"kebiu"};
 var PIC={"Kebin":"img/kebin.jpg","Carol":"img/carol.jpg"};
+var DEMO=false,RSVP_URL="https://script.google.com/macros/s/AKfycbybUgRs53zNKWD682-EUZwfGTvkW7zMGCO77dK3CIOaEieWyT61N29Y-VCwgdUoNv8wZw/exec",RS={},YO="";
+try{YO=localStorage.getItem("fiestaYo")||""}catch(e){}
+if(DEMO){try{var _d=JSON.parse(localStorage.getItem("fiestaDemoRS")||"{}");for(var _k in _d)RS[_k]=_d[_k]}catch(e){}}
+var RL={si:"Sí voy",talvez:"Tal vez",no:"No puede"},RB={si:"✓",talvez:"?",no:"✗"};
+function rsvpLoad(){if(DEMO||!RSVP_URL)return;fetch(RSVP_URL).then(function(r){return r.json()}).then(function(d){var n={};for(var k in d)if(d[k]&&RL[d[k].status])n[k]=d[k].status;if(JSON.stringify(n)!==JSON.stringify(RS)){RS=n;var a=document.activeElement;if(!(a&&a.tagName=="INPUT"&&a.type=="text"))view()}}).catch(function(){})}
+function rsvpSend(name,st){RS[name]=st;view();if(DEMO){try{var d=JSON.parse(localStorage.getItem("fiestaDemoRS")||"{}");d[name]=st;localStorage.setItem("fiestaDemoRS",JSON.stringify(d))}catch(e){}return}
+fetch(RSVP_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({name:name,status:st})}).then(function(r){return r.json()}).then(function(){rsvpLoad()}).catch(function(){var m=document.querySelector(".rmsg");if(m)m.textContent="No se pudo guardar. Revisa tu internet e intenta otra vez."})}
+function rcount(){var c={si:0,talvez:0,no:0};S.guests.forEach(function(g){var s=RS[(g.n||"").trim()];if(s)c[s]++});return c}
+function rsvpBox(){var names=S.guests.map(function(g){return (g.n||"").trim()}).filter(Boolean),mine=YO&&RS[YO],c=rcount();
+var msg=!YO?"Elige tu nombre para confirmar.":!mine?"¿Vienes, "+esc(YO)+"?":mine=="si"?"¡Listo, "+esc(YO)+"! Te esperamos 🎃":mine=="talvez"?"Va, "+esc(YO)+". Avísanos cuando sepas 👻":"Te vamos a extrañar, "+esc(YO)+" 😭";
+return (DEMO?'<p class="demo"><b>Vista previa.</b> Las respuestas que ves son de ejemplo y lo que marques solo se guarda en tu celular.</p>':'')+
+'<div class="rsvp"><h2>¿Vienes?</h2><label for="yo">¿Quién eres?</label><select id="yo"><option value="">Elige tu nombre</option>'+names.map(function(n){return '<option'+(n==YO?" selected":"")+'>'+esc(n)+'</option>'}).join("")+'</select>'+
+'<div class="rb">'+[["si","🎉","¡Sí voy!"],["talvez","🤔","Tal vez"],["no","😭","No puedo"]].map(function(o){return '<button type="button" data-rsvp="'+o[0]+'" aria-pressed="'+(mine==o[0])+'"'+(YO?"":" disabled")+'><i aria-hidden="true">'+o[1]+'</i>'+o[2]+'</button>'}).join("")+'</div>'+
+'<p class="rmsg" role="status">'+msg+'</p><p class="rcount">'+c.si+' van · '+c.talvez+' tal vez · '+c.no+' no pueden</p></div>'}
 function chip(o,i,P){var n=o.n.trim(),u=IGU[n],src=PIC[n]||(u?'img/'+u+'.jpg':''),av=src?'<img class="av" src="'+src+'" alt="">':'<i style="background:'+P[i%P.length]+'" aria-hidden="true">'+esc(n.charAt(0).toUpperCase())+'</i>';
-return '<span>'+av+'<em>'+esc(o.n)+(u?'<a class="ig" href="https://www.instagram.com/'+u+'/" target="_blank" rel="noopener">@'+u+'</a>':'')+'</em></span>'}
+var st=RS[n];return '<span'+(st?' class="st-'+st+'"':'')+'>'+av+(st?'<b class="bd" aria-label="'+RL[st]+'">'+RB[st]+'</b>':'')+'<em>'+esc(o.n)+(u?'<a class="ig" href="https://www.instagram.com/'+u+'/" target="_blank" rel="noopener">@'+u+'</a>':'')+'</em></span>'}
 var MO=["Llegada","Comida","Baile","Pastel","Karaoke"];
 var SC={
-guests:[["ok","check"],["n","text","Nombre"]],
+guests:[["n","text","Nombre"]],
 food:[["ok","check"],["x","text","Qué falta"],["who","text","Quién lo trae","w"]],
 games:[["ok","check"],["x","text","Juego"]],
 awards:[["x","text","Premio"],["w","text","Ganador","w"]],
@@ -168,18 +207,18 @@ if(f[1]=="sel")return '<select aria-label="Momento"'+a+'>'+MO.map(function(m){re
 return (k=="guests"&&f[0]=="n"?'<span aria-hidden="true">⭐</span>':'')+'<input type="text" class="'+(f[3]||"")+'" placeholder="'+f[2]+'" value="'+esc(o[f[0]])+'"'+a+'>'}
 function rows(k){
 return '<div class="card">'+S[k].map(function(o,i){
-return '<div class="r'+(k=="songs"?' s':'')+'">'+SC[k].map(function(f){return fld(k,i,o,f)}).join("")+(k=="songs"&&o.x?'<a class="sp" target="_blank" rel="noopener" aria-label="Buscar en Spotify" href="https://open.spotify.com/search/'+encodeURIComponent(o.x.replace(/\s*\(.*\)\s*$/,""))+'">▶</a>':'')+'<button class="x" data-del="'+k+'" data-i="'+i+'" aria-label="Quitar">×</button></div>'}).join("")+
+var gst=k=="guests"?RS[(o.n||"").trim()]:null;return '<div class="r'+(k=="songs"?' s':'')+'">'+(k=="guests"?'<span class="gs'+(gst?' st-'+gst:'')+'">'+(gst?RL[gst]:"Sin respuesta")+'</span>':'')+SC[k].map(function(f){return fld(k,i,o,f)}).join("")+(k=="songs"&&o.x?'<a class="sp" target="_blank" rel="noopener" aria-label="Buscar en Spotify" href="https://open.spotify.com/search/'+encodeURIComponent(o.x.replace(/\s*\(.*\)\s*$/,""))+'">▶</a>':'')+'<button class="x" data-del="'+k+'" data-i="'+i+'" aria-label="Quitar">×</button></div>'}).join("")+
 '<button class="add" data-add="'+k+'">+ Agregar</button></div>'}
 function cnt(k,f){return S[k].filter(function(o){return o[f]}).length}
 function view(){
 var h="";
 if(tab=="inv"){var P=["#FF7A1A","#8BFF5A","#C58BFF","#FFD23F"],g=S.guests.filter(function(o){return o.n&&o.n.trim()});
-h='<div class="hero"><button type="button" class="bg" data-boo="1" aria-label="Sorpresa de Halloween">🎃</button><p class="k">Esta es tu invitación</p><h2>Halloween + doble cumple</h2><p>Iván y Andy cumplen años y lo celebramos juntos en plena semana de Halloween. Ven con tu disfraz y con ganas de cantar, jugar y conocer gente nueva.</p></div>'+
+h='<div class="hero"><button type="button" class="bg" data-boo="1" aria-label="Sorpresa de Halloween">🎃</button><p class="k">Esta es tu invitación</p><h2>Halloween + doble cumple</h2><p>Iván y Andy cumplen años y lo celebramos juntos en plena semana de Halloween. Ven con tu disfraz y con ganas de cantar, jugar y conocer gente nueva.</p></div>'+rsvpBox()+
 '<div class="info"><div><b>Cuándo</b><span>Viernes 30 de octubre, 7:00 pm</span></div><div><b>Dónde</b><span>Casa de Iván, Jardines de Verona</span></div><div><b>Dress code</b><span>Disfraz muy recomendado (hay concurso)</span></div><div><b>Qué habrá</b><span>Comida, juegos, karaoke y pastel</span></div></div>'+
 '<h2>Qué traer</h2><div class="must"><b>Obligatorio</b><span>Trae tu propia bebida, con o sin alcohol 🥤🍺</span></div><p class="n">Y si quieres, algo para compartir:</p><div class="chips"><span>Snacks</span><span>Nachos</span><span>Manías</span><span>Gomitas</span></div>'+
-'<h2>Quién viene</h2><p class="n">Para que ya se ubiquen antes de llegar: '+g.length+' personas y contando.</p><div class="ppl">'+g.map(function(o,i){return chip(o,i,P)}).join("")+'</div>'+
+'<h2>Quién viene</h2><p class="n">Para que ya se ubiquen antes de llegar: '+g.length+' invitados, '+rcount().si+' ya confirmaron.</p><div class="ppl">'+g.map(function(o,i){return chip(o,i,P)}).join("")+'</div>'+
 '<div class="acts"><button class="go" data-goto="dir">Cómo llegar</button><button class="go" data-goto="cos" style="background:var(--ac);color:var(--on)">Ideas de disfraz</button></div>'}
-if(tab=="guests")h='<p class="stat">'+cnt("guests","ok")+" confirmados de "+S.guests.length+' invitados</p>'+rows("guests");
+if(tab=="guests"){var rc=rcount();h='<p class="stat">'+rc.si+' van, '+rc.talvez+' tal vez y '+rc.no+' no pueden, de '+S.guests.length+' invitados</p>'+rows("guests")}
 if(tab=="food")h='<p class="stat">'+cnt("food","ok")+" de "+S.food.length+' pendientes listos</p>'+rows("food");
 if(tab=="games")h=(S.pick?'<div class="big">'+esc(S.pick)+"</div>":"")+'<button class="go" data-rand="1">Sacar un juego al azar</button><p class="n" style="margin-top:10px">Pensados para grupos de 6 a 18 y todas las edades.</p><h2>Lista de juegos</h2>'+rows("games")+'<h2>Qué tener listo</h2><div class="chips">'+["Bocina y extensión", "Playlist descargada (sin anuncios)", "Micrófono o app de karaoke", "Premios del concurso", "Papel higiénico para La momia", "Lotería y fichas", "Piñata con dulces", "Rincón de fotos con buena luz", "Velas y encendedor para el pastel", "Kleenex, por si alguien quiere llorar 😭"].map(function(c){return "<span>"+c+"</span>"}).join("")+"</div>";
 if(tab=="cos")h='<p class="n">Ideas si no saben de qué ir: individuales, y algunas en pareja por si acaso.</p>'+[["Cartoon Network",["Johnny Bravo","Dexter","Dee Dee","Bombón, Burbuja o Bellota","Mojo Jojo","Coraje, el perro cobarde","Puro Hueso","Mandy","Finn el humano","Marceline la vampira","Dulce Princesa","Gumball","Samurái Jack","Steven Universe"]],["Disney y Pixar",["Cruella de Vil","Maléfica","Úrsula","Hades","Stitch","Miguel de Coco","Mirabel de Encanto","Elsa","Mulán","Moana","Campanita","Jack Sparrow","Buzz Lightyear","Jessie","Mike Wazowski","Edna Moda","Jack Skellington"]],["Artistas",["Selena Quintanilla","Juan Gabriel","Celia Cruz","Shakira","Karol G","Bad Bunny","Gloria Trevi","Michael Jackson en Thriller","Freddie Mercury","Lady Gaga","Britney Spears","Madonna","Elvis","Frida Kahlo"]],["Clásicos de terror",["Merlina Addams","Chucky","Annabelle","Ghostface de Scream","Pennywise","Beetlejuice","Freddy Krueger","Samara de El Aro","La Llorona","Catrina"]],["Guiño a los invitados",["Mac Miller","Héctor Lavoe","Tyler Joseph de Twenty One Pilots","Alejandra Guzmán","Fergie de Black Eyed Peas","Tito El Bambino"]],["En pareja",["Dexter y Dee Dee","Finn y Jake","Lilo y Stitch","Woody y Jessie","Mike y Sulley","Jack y Sally","Shrek y Fiona","Gomez y Morticia Addams","Chucky y Tiffany","Mario y Luigi","Danny y Sandy de Grease","Sonny y Cher"]]].map(function(g){return '<p class="stat" style="margin:14px 0 8px">'+g[0]+'</p><div class="chips">'+g[1].map(function(c){return "<span>"+c+"</span>"}).join("")+'</div>'}).join("")+"<h2>Premios del concurso</h2>"+rows("awards");
@@ -191,11 +230,13 @@ document.addEventListener("click",function(e){
 var b=e.target.closest("button");if(!b)return;
 if(b.dataset.tab){tab=b.dataset.tab;view();return}
 if(b.dataset.goto){tab=b.dataset.goto;view();window.scrollTo(0,0);return}
+if(b.dataset.rsvp){if(YO)rsvpSend(YO,b.dataset.rsvp);return}
 if(b.dataset.add){var k=b.dataset.add;S[k].push(JSON.parse(JSON.stringify(NEW[k])));save(k);view();var t=document.querySelectorAll('input[type="text"][data-k="'+k+'"]');if(t.length)t[t.length-SC[k].filter(function(f){return f[1]=="text"}).length].focus();return}
 if(b.dataset.del){S[b.dataset.del].splice(+b.dataset.i,1);save(b.dataset.del);view();return}
 if(b.dataset.rand){var l=S.games.filter(function(g){return !g.ok&&g.x});S.pick=l.length?l[Math.floor(Math.random()*l.length)].x:"Ya jugaron todo. ¡Agreguen más juegos!";save("pick");view()}});
 document.addEventListener("input",function(e){
 var t=e.target;
+if(t.id=="yo"){YO=t.value;try{localStorage.setItem("fiestaYo",YO)}catch(e){}view();return}
 if(t.id=="pl"){S.pl=t.value.trim();var a=document.getElementById("op");if(/^https?:\/\//i.test(S.pl)){a.href=S.pl;a.style.opacity=1;a.removeAttribute("aria-disabled")}else{a.removeAttribute("href");a.style.opacity=.5}save("pl");return}
 if(!t.dataset.k)return;
 var o=S[t.dataset.k][+t.dataset.i];
@@ -205,6 +246,7 @@ function days(){var n=new Date(),a=new Date(n.getFullYear(),n.getMonth(),n.getDa
 var d=days(),c=document.getElementById("cd");
 c.textContent=d>1?"Faltan "+d+" días":d==1?"Es mañana":d==0?"¡Hoy es el día!":"¡Gracias por venir!";
 view();
+rsvpLoad();setInterval(rsvpLoad,30000);
 try{
 claude.use("db").then(function(db){if(!db)return;ref=db.doc("party/state");ref.onSnapshot(apply,function(){ref=null})}).catch(function(){});
 claude.use("user").then(function(u){if(!u)return;return Promise.all([u.isOwner(),u.can("data.write")]).then(function(v){OWN=v[0];if(v[1]===false&&!v[0]){RO=true;note()}else seed()})}).catch(function(){});
@@ -236,10 +278,12 @@ function size(){var r=window.devicePixelRatio||1;cv.width=innerWidth*r;cv.height
 function burst(x,y,n){if(RM||!cx)return;if(!raf)size();var C=["#FF7A1A","#8BFF5A","#C58BFF","#FFD23F"];for(var i=0;i<n;i++){var a=Math.random()*Math.PI*2,sp=3+Math.random()*7;P.push({x:x,y:y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp-4,r:3+Math.random()*4,c:C[i%4],l:60+Math.random()*40,rot:Math.random()*6})}if(!raf)raf=requestAnimationFrame(step)}
 function step(){cx.clearRect(0,0,innerWidth,innerHeight);P=P.filter(function(p){p.l--;p.vy+=.25;p.vx*=.99;p.x+=p.vx;p.y+=p.vy;p.rot+=.2;cx.save();cx.translate(p.x,p.y);cx.rotate(p.rot);cx.globalAlpha=Math.min(1,p.l/30);cx.fillStyle=p.c;cx.fillRect(-p.r,-p.r/2,p.r*2,p.r);cx.restore();return p.l>0&&p.y<innerHeight+40});raf=P.length?requestAnimationFrame(step):0;if(!raf)cx.clearRect(0,0,innerWidth,innerHeight)}
 window.fiestaBurst=burst;
+function tears(){if(RM||!document.body.animate)return;for(var i=0;i<16;i++){var t=document.createElement("span");t.className="flyer";t.textContent=i%4?"💧":"😭";t.style.left=Math.round(Math.random()*innerWidth)+"px";t.style.top="-40px";document.body.appendChild(t);t.animate([{transform:"translateY(0)",opacity:1},{transform:"translateY("+(innerHeight+80)+"px)",opacity:.6}],{duration:1400+Math.random()*900,delay:Math.random()*500,easing:"cubic-bezier(.4,0,.8,.6)",fill:"backwards"}).onfinish=(function(el){return function(){el.remove()}})(t)}}
 function bats(x,y){if(RM||!document.body.animate)return;for(var i=0;i<7;i++){var b=document.createElement("span");b.className="flyer";b.textContent=i%3?"🦇":"👻";b.style.left=x+"px";b.style.top=y+"px";document.body.appendChild(b);var dx=Math.round((Math.random()*2-1)*220),dy=Math.round(-150-Math.random()*250);b.animate([{transform:"translate(-50%,-50%) scale(.4)",opacity:1},{transform:"translate(calc(-50% + "+dx+"px),calc(-50% + "+dy+"px)) scale(1.2) rotate("+Math.round(dx/6)+"deg)",opacity:0}],{duration:1100+Math.random()*500,easing:"cubic-bezier(.2,.7,.3,1)"}).onfinish=(function(el){return function(){el.remove()}})(b)}}
 document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("button,a.sp");if(!b)return;
 if(b===btn){on=!on;try{localStorage.setItem("fiestaSnd",on?"on":"off")}catch(_){}lbl();if(on)SFX.pop();return}
 var r=b.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2;
+if(b.dataset.rsvp){var v=b.dataset.rsvp;if(v=="si"){SFX.fanfare();burst(x,y,110);setTimeout(function(){burst(innerWidth*.2,innerHeight*.3,50);burst(innerWidth*.8,innerHeight*.3,50)},250)}else if(v=="talvez"){SFX.boo();bats(x,y)}else{SFX.sad();tears()}return}
 if(b.dataset.boo){SFX.boo();bats(x,y);return}
 if(b.dataset.rand){SFX.roll();setTimeout(function(){SFX.fanfare();var g=document.querySelector(".big"),q=g?g.getBoundingClientRect():r;burst(q.left+q.width/2,q.top+q.height/2,90)},480);return}
 if(b.dataset.goto){SFX.whoosh();return}
