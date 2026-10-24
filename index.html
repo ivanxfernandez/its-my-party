@@ -115,7 +115,7 @@ Object.keys(S).forEach(function(k){if(dirty[k]||d[k]===undefined)return;if(JSON.
 if(ch){loc();if(!(a&&a.tagName=="INPUT"&&a.type=="text"&&document.getElementById("v").contains(a)))view()}}
 function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;")}
 var FAV={"Lili":"Rata Blanca","Kebin":"Mac Miller","Sofi":"ADÉLA","Juan":"Twenty One Pilots","Carol":"Alejandra Guzmán","Sharuun":"Black Eyed Peas","Ivxn":"Joji y Twenty One Pilots","Andy":"Héctor Lavoe","Choco":"Tito El Bambino"};
-var IGU={"Ivxn":"ivanxfernandez","Andy":"badassydna","Susan":"sus4n._","Juan":"lehnho_","Jan":"_jan.1_","Miki":"mikingmoran","Sharuun":"sharoonmoreira","Andrea":"andra.maquiz","Wavo":"parkerrodrigo","Karen":"karenabascal__","Alison":"reyesalison.d","Choco":"joosue_cabrera","Sofi":"_.angiee_","Haylin":"_.haylinng_","Mac Miller":"macmiller"};
+var IGU={"Ivxn":"ivanxfernandez","Andy":"badassydna","Susan":"sus4n._","Juan":"lehnho_","Jan":"_jan.1_","Miki":"mikingmoran","Sharuun":"sharoonmoreira","Andrea":"andra.maquiz","Wavo":"parkerrodrigo","Karen":"karenabascal__","Alison":"reyesalison.d","Choco":"joosue_cabrera","Sofi":"_.angiee_","Haylin":"_.haylinng_","Mac Miller":"macmiller","Lili":"_lili.14"};
 function chip(o,i,P){var n=o.n.trim(),u=IGU[n],av=u?'<img class="av" src="img/'+u+'.jpg" alt="">':'<i style="background:'+P[i%P.length]+'" aria-hidden="true">'+esc(n.charAt(0).toUpperCase())+'</i>';
 return '<span>'+av+'<em>'+esc(o.n)+(FAV[n]?'<small>♪ '+FAV[n]+'</small>':'')+(u?'<a class="ig" href="https://www.instagram.com/'+u+'/" target="_blank" rel="noopener">@'+u+'</a>':'')+'</em></span>'}
 var MO=["Llegada","Comida","Baile","Pastel","Karaoke"];
