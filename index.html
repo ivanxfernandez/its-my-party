@@ -67,6 +67,9 @@ nav button[aria-pressed="true"]{color:var(--on2)}
 .ppl i,.ppl .av{width:40px;height:40px;flex:none;border-radius:50%}
 .ppl .av{object-fit:cover;border:2px solid var(--ac);box-sizing:border-box}
 .ppl .ig{font-size:12px;font-weight:600;color:var(--ac2);text-decoration:none}
+.must{background:rgba(255,122,26,.12);border:1.5px solid var(--ac);border-radius:14px;padding:12px 14px;margin-bottom:12px}
+.must b{display:block;color:var(--ac);font-size:13px;letter-spacing:1px;text-transform:uppercase}
+.must span{display:block;font-weight:700;font-size:17px;line-height:1.35;margin-top:2px}
 .acts{display:flex;flex-wrap:wrap;gap:10px}
 </style>
 </head>
@@ -145,6 +148,7 @@ var h="";
 if(tab=="inv"){var P=["#FF7A1A","#8BFF5A","#C58BFF","#FFD23F"],g=S.guests.filter(function(o){return o.n&&o.n.trim()});
 h='<div class="hero"><span class="bg" aria-hidden="true">🎃</span><p class="k">Esta es tu invitación</p><h2>Halloween + doble cumple</h2><p>Iván y Andy cumplen años y lo celebramos juntos en plena semana de Halloween. Ven con tu disfraz y con ganas de cantar, jugar y conocer gente nueva.</p></div>'+
 '<div class="info"><div><b>Cuándo</b><span>Viernes 30 de octubre, 7:00 pm</span></div><div><b>Dónde</b><span>Casa de Iván, Jardines de Verona</span></div><div><b>Dress code</b><span>Disfraz muy recomendado (hay concurso)</span></div><div><b>Qué habrá</b><span>Comida, juegos, karaoke y pastel</span></div></div>'+
+'<h2>Qué traer</h2><div class="must"><b>Obligatorio</b><span>Trae tu propia bebida, con o sin alcohol 🥤🍺</span></div><p class="n">Y si quieres, algo para compartir:</p><div class="chips"><span>Snacks</span><span>Nachos</span><span>Manías</span><span>Gomitas</span></div>'+
 '<h2>Quién viene</h2><p class="n">Para que ya se ubiquen antes de llegar: '+g.length+' personas y contando.</p><div class="ppl">'+g.map(function(o,i){return chip(o,i,P)}).join("")+'</div>'+
 '<div class="acts"><button class="go" data-goto="dir">Cómo llegar</button><button class="go" data-goto="cos" style="background:var(--ac);color:var(--on)">Ideas de disfraz</button></div>'}
 if(tab=="guests")h='<p class="stat">'+cnt("guests","ok")+" confirmados de "+S.guests.length+' invitados</p>'+rows("guests");
