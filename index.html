@@ -92,7 +92,7 @@ games:[["ok","check"],["x","text","Juego"]],
 awards:[["x","text","Premio"],["w","text","Ganador","w"]],
 songs:[["x","text","Canción y artista"],["m","sel"]]};
 var NEW={itin:{t:"",x:""},guests:{ok:false,n:""},food:{ok:false,x:"",who:""},games:{ok:false,x:""},awards:{x:"",w:""},songs:{x:"",m:"Baile"}};
-var TABS=[["itin","Itinerario"],["guests","Invitados"],["food","Comida"],["games","Juegos"],["cos","Disfraces"],["mus","Música"]];
+var TABS=[["itin","Itinerario"],["guests","Invitados"],["food","Comida"],["games","Juegos"],["cos","Disfraces"],["mus","Música"],["dir","A DONDE VOY"]];
 var tab="itin";
 function fld(k,i,o,f){
 var a=' data-k="'+k+'" data-i="'+i+'" data-f="'+f[0]+'"';
@@ -112,6 +112,7 @@ if(tab=="food")h='<p class="stat">'+cnt("food","ok")+" de "+S.food.length+' pend
 if(tab=="games")h=(S.pick?'<div class="big">'+esc(S.pick)+"</div>":"")+'<button class="go" data-rand="1">Sacar un juego al azar</button><h2>Lista de juegos</h2>'+rows("games");
 if(tab=="cos")h='<p class="n">Ideas si no saben de qué ir:</p><div class="chips">'+["Vampiro","Bruja","Esqueleto","Fantasma","Momia","Zombi","Catrina","Personaje de terror","Disfraz en pareja"].map(function(c){return "<span>"+c+"</span>"}).join("")+"</div><h2>Premios del concurso</h2>"+rows("awards");
 if(tab=="mus"){var ok=/^https?:\/\//i.test(S.pl);h='<div class="card"><p class="n">Pega el link de tu playlist de Spotify o YouTube.</p><div class="r"><input type="text" id="pl" placeholder="https://..." value="'+esc(S.pl)+'" aria-label="Link de la playlist"></div><p style="margin:10px 0 0"><a class="go" id="op" target="_blank" rel="noopener"'+(ok?' href="'+esc(S.pl)+'"':' aria-disabled="true" style="opacity:.5"')+">Abrir playlist</a></p></div><h2>Canciones por momento</h2>"+rows("songs")}
+if(tab=="dir")h='<div class="card"><h2 style="margin-top:0">Jardines de Verona</h2><p style="margin:0 0 6px">10ma calle 10-77</p><p style="margin:0 0 6px">Codigo 6000 y 1197</p><p style="margin:0;font-weight:600">Familia Fernandez</p></div>';
 document.getElementById("v").innerHTML=h;
 document.getElementById("tabs").innerHTML=TABS.map(function(t){return '<button data-tab="'+t[0]+'" aria-pressed="'+(t[0]==tab)+'">'+t[1]+"</button>"}).join("");if(RO)document.querySelectorAll("#v input,#v select,#v button").forEach(function(e){e.disabled=true})}
 document.addEventListener("click",function(e){
