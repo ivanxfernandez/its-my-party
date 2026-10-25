@@ -131,7 +131,7 @@ nav button:active,.go:active,.add:active,#snd:active{transform:scale(.92)}
 <button type="button" id="snd" aria-label="Silenciar sonidos">🔊</button>
 <main>
 <h1>It’s my party and I’ll cry if I want to</h1>
-<p class="sub">Cumple de Iván y Andy, viernes 30 de octubre, en casa de Iván. Disfraces bienvenidos.</p>
+<p class="sub">Cumple de Ivan y Andy, viernes 30 de octubre, en casa de Ivan. Disfraces bienvenidos.</p>
 <span class="pill" id="cd"></span>
 <p class="n" id="note" hidden></p>
 <nav id="tabs" aria-label="Secciones"></nav>
@@ -216,8 +216,8 @@ function cnt(k,f){return S[k].filter(function(o){return o[f]}).length}
 function view(){
 var h="";
 if(tab=="inv"){var P=["#FF7A1A","#8BFF5A","#C58BFF","#FFD23F"],g=S.guests.filter(function(o){return o.n&&o.n.trim()});
-h='<div class="hero"><button type="button" class="bg" data-boo="1" aria-label="Sorpresa de Halloween">🎃</button><p class="k">Esta es tu invitación</p><h2>Halloween + doble cumple</h2><p>Iván y Andy cumplen años y lo celebramos juntos en plena semana de Halloween. Ven con tu disfraz y con ganas de cantar, jugar y conocer gente nueva.</p></div>'+rsvpBox()+
-'<div class="info"><div><b>Cuándo</b><span>Viernes 30 de octubre, 7:00 pm</span></div><div><b>Dónde</b><span>Casa de Iván, Jardines de Verona</span></div><div><b>Dress code</b><span>Disfraz muy recomendado (hay concurso)</span></div><div><b>Qué habrá</b><span>Comida, juegos, karaoke y pastel</span></div></div>'+
+h='<div class="hero"><button type="button" class="bg" data-boo="1" aria-label="Sorpresa de Halloween">🎃</button><p class="k">Esta es tu invitación</p><h2>Halloween + doble cumple</h2><p>Ivan y Andy cumplen años y lo celebramos juntos en plena semana de Halloween. Ven con tu disfraz y con ganas de cantar, jugar y conocer gente nueva.</p></div>'+rsvpBox()+
+'<div class="info"><div><b>Cuándo</b><span>Viernes 30 de octubre, 7:00 pm</span></div><div><b>Dónde</b><span>Casa de Ivan, Jardines de Verona</span></div><div><b>Dress code</b><span>Disfraz muy recomendado (hay concurso)</span></div><div><b>Qué habrá</b><span>Comida, juegos, karaoke y pastel</span></div></div>'+
 '<h2>Qué traer</h2><div class="must"><b>Obligatorio</b><span>Trae tu propia bebida, con o sin alcohol 🥤🍺</span></div><p class="n">Y si quieres, algo para compartir:</p><div class="chips"><span>Snacks</span><span>Nachos</span><span>Manías</span><span>Gomitas</span></div>'+
 '<h2>Quién viene</h2><p class="n">Para que ya se ubiquen antes de llegar: '+g.length+' invitados, '+rcount().si+' ya confirmaron.</p><div class="ppl">'+g.map(function(o,i){return chip(o,i,P)}).join("")+'</div>'+
 '<div class="acts"><button class="go" data-goto="dir">Cómo llegar</button><button class="go" data-goto="cos" style="background:var(--ac);color:var(--on)">Ideas de disfraz</button></div>'}
