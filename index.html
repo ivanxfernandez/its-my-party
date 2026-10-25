@@ -141,17 +141,18 @@ nav button:active,.go:active,.add:active,#snd:active{transform:scale(.92)}
 var K="fiestaIvanAndy",S=null;
 var GM=[{ok:false,x:"Adivina de quién es la canción: suena una de la playlist y adivinan quién la eligió"},{ok:false,x:"Pasarela y concurso de disfraces con premios"},{ok:false,x:"Charadas de personajes: Disney, Cartoon Network y artistas"},{ok:false,x:"Karaoke en equipos"},{ok:false,x:"Lotería de Halloween (para todas las edades)"},{ok:false,x:"Dos verdades y una mentira, para conocerse"},{ok:false,x:"La momia: envolver a un compañero con papel higiénico"},{ok:false,x:"Congelados: bailar y quedarse quieto cuando pare la música"},{ok:false,x:"Mafia o Werewolf (mejor con 8 o más)"},{ok:false,x:"Piñata"}];
 var SG=[{x:"It’s My Party – Lesley Gore (la del nombre de la fiesta)",m:"Llegada"},{x:"Last Train to London – Electric Light Orchestra",m:"Llegada"},{x:"Nicole Kidman – ADÉLA (para Sofi)",m:"Llegada"},{x:"Gimme Love – Joji (para Ivxn)",m:"Llegada"},{x:"El Cantante – Héctor Lavoe (para Andy)",m:"Comida"},{x:"Baila Esta Cumbia – Selena",m:"Comida"},{x:"Party on Fifth Ave. – Mac Miller (para Kebin)",m:"Comida"},{x:"Flow Natural – Tito El Bambino (para Choco)",m:"Baile"},{x:"Hey Mama – The Black Eyed Peas (para Sharuun)",m:"Baile"},{x:"Let’s Get It Started – The Black Eyed Peas (para Sharuun)",m:"Baile"},{x:"Thriller – Michael Jackson",m:"Baile"},{x:"Danza Kuduro – Don Omar",m:"Baile"},{x:"Vivir Mi Vida – Marc Anthony",m:"Baile"},{x:"September – Earth, Wind & Fire",m:"Baile"},{x:"Las Mañanitas",m:"Pastel"},{x:"Un grito en la noche – Alejandra Guzmán (para Carol)",m:"Karaoke"},{x:"La leyenda del hada y el mago – Rata Blanca (para Lili)",m:"Karaoke"},{x:"Lane Boy – Twenty One Pilots (para Juan)",m:"Karaoke"},{x:"Saturday – Twenty One Pilots (para Ivxn)",m:"Karaoke"},{x:"Mr. Brightside – The Killers",m:"Karaoke"},{x:"Livin’ on a Prayer – Bon Jovi",m:"Karaoke"}];
-var G=[{ok:false,n:"Ivxn"},{ok:false,n:"Andy"},{ok:false,n:"Susan"},{ok:false,n:"Kebin"},{ok:false,n:"Andrea"},{ok:false,n:"Sharuun"},{ok:false,n:"Karen"},{ok:false,n:"Alison"},{ok:false,n:"Juan"},{ok:false,n:"Lili"},{ok:false,n:"Sofi"},{ok:false,n:"Carol"},{ok:false,n:"Miki"},{ok:false,n:"Choco"},{ok:false,n:"Jan"},{ok:false,n:"Haylin"},{ok:false,n:"Mac Miller"},{ok:false,n:"Wavo"}];
+var G=[{ok:false,n:"Ivxn"},{ok:false,n:"Andy"},{ok:false,n:"Susan"},{ok:false,n:"Kebin"},{ok:false,n:"Andrea"},{ok:false,n:"Sharuun"},{ok:false,n:"Karen"},{ok:false,n:"Alison"},{ok:false,n:"Juan"},{ok:false,n:"Lili"},{ok:false,n:"Sofi"},{ok:false,n:"Carol"},{ok:false,n:"Miki"},{ok:false,n:"Choco"},{ok:false,n:"Jan"},{ok:false,n:"Haylin"},{ok:false,n:"Mac Miller"},{ok:false,n:"Wavo"},{ok:false,n:"Willy"}];
 try{S=JSON.parse(localStorage.getItem(K))}catch(e){}
 if(!S)S={
 guests:G.slice(),
 food:[{ok:false,x:"Pastel",who:""},{ok:false,x:"Dulces de Halloween",who:""},{ok:false,x:"Botanas",who:""},{ok:false,x:"Platillo principal",who:""},{ok:false,x:"Bebidas y hielo",who:""},{ok:false,x:"Vasos, platos y servilletas",who:""}],
 games:GM.slice(),
 awards:[{x:"Disfraz más creativo",w:""},{x:"Disfraz más terrorífico",w:""},{x:"Disfraz más cómico",w:""},{x:"Mejor disfraz en pareja",w:""}],
-songs:SG.slice(),pl:"",pick:"",v:3};
+songs:SG.slice(),pl:"",pick:"",v:4};
 if(S.guests)S.guests.forEach(function(g){if(g.n=="Iván")g.n="Ivxn"});
 if(!S.v||S.v<2){S.games=GM.slice();S.songs=SG.slice();S.pick="";if(S.guests&&S.guests.length&&!S.guests.some(function(g){return /^wavo$/i.test((g.n||"").trim())}))S.guests.push({ok:false,n:"Wavo"});S.v=2;try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}}
 if(S.v<3){(S.awards||[]).forEach(function(a){if(a.x=="Mejor disfraz en pareja o grupo")a.x="Mejor disfraz en pareja"});S.v=3;try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}}
+if(S.v<4){if(S.guests&&S.guests.length&&!S.guests.some(function(g){return /^willy$/i.test((g.n||"").trim())}))S.guests.push({ok:false,n:"Willy"});S.v=4;try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}}
 if(!S.guests||!S.guests.length){S.guests=G.slice();try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}}
 var ref=null,ex=false,RO=false,OWN=false,dirty={},busy=false,tm=null;
 function loc(){try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}}
@@ -174,7 +175,7 @@ Object.keys(S).forEach(function(k){if(dirty[k]||d[k]===undefined)return;if(JSON.
 if(ch){loc();if(!(a&&a.tagName=="INPUT"&&a.type=="text"&&document.getElementById("v").contains(a)))view()}}
 function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;")}
 var FAV={"Lili":"Rata Blanca","Kebin":"Mac Miller","Sofi":"ADÉLA","Juan":"Twenty One Pilots","Carol":"Alejandra Guzmán","Sharuun":"Black Eyed Peas","Ivxn":"Joji y Twenty One Pilots","Andy":"Héctor Lavoe","Choco":"Tito El Bambino"};
-var IGU={"Ivxn":"ivanxfernandez","Andy":"badassydna","Susan":"sus4n._","Juan":"lehnho_","Jan":"_jan.1_","Miki":"mikingmoran","Sharuun":"sharoonmoreira","Andrea":"andra.maquiz","Wavo":"parkerrodrigo","Karen":"karenabascal__","Alison":"reyesalison.d","Choco":"joosue_cabrera","Sofi":"_.angiee_","Haylin":"_.haylinng_","Mac Miller":"macmiller","Lili":"_lili.14","Kebin":"kebiu"};
+var IGU={"Ivxn":"ivanxfernandez","Andy":"badassydna","Susan":"sus4n._","Juan":"lehnho_","Jan":"_jan.1_","Miki":"mikingmoran","Sharuun":"sharoonmoreira","Andrea":"andra.maquiz","Wavo":"parkerrodrigo","Karen":"karenabascal__","Alison":"reyesalison.d","Choco":"joosue_cabrera","Sofi":"_.angiee_","Haylin":"_.haylinng_","Mac Miller":"macmiller","Lili":"_lili.14","Kebin":"kebiu","Willy":"_willy_909"};
 var PIC={"Kebin":"img/kebin.jpg","Carol":"img/carol.jpg"};
 var DEMO=false,RSVP_URL="https://script.google.com/macros/s/AKfycbybUgRs53zNKWD682-EUZwfGTvkW7zMGCO77dK3CIOaEieWyT61N29Y-VCwgdUoNv8wZw/exec",RS={},YO="";
 try{YO=localStorage.getItem("fiestaYo")||""}catch(e){}
